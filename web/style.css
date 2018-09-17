@@ -1,21 +1,45 @@
 body {
     margin:0px;
     font-family: Verdana, Geneva, sans-serif;
-    background-color:#5F9EA0;
+    font-family: 'Advent Pro';
+   # background-color:#5F9EA0;
     color:#F5F5F5;
 }
 
 .main {
     padding-top:30px;
+#    background-color:#2F4F4F;
+    
+    background: rgba(47,79,79,1);
+    background: -moz-linear-gradient(top, rgba(47,79,79,1) 0%, rgba(47,79,79,1) 0%, rgba(55,102,102,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(47,79,79,1)), color-stop(0%, rgba(47,79,79,1)), color-stop(100%, rgba(55,102,102,1)));
+    background: -webkit-linear-gradient(top, rgba(47,79,79,1) 0%, rgba(47,79,79,1) 0%, rgba(55,102,102,1) 100%);
+    background: -o-linear-gradient(top, rgba(47,79,79,1) 0%, rgba(47,79,79,1) 0%, rgba(55,102,102,1) 100%);
+    background: -ms-linear-gradient(top, rgba(47,79,79,1) 0%, rgba(47,79,79,1) 0%, rgba(55,102,102,1) 100%);
+    background: linear-gradient(to bottom, rgba(47,79,79,1) 0%, rgba(47,79,79,1) 0%, rgba(55,102,102,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f4f4f', endColorstr='#376666', GradientType=0 );
+
+
 }
 
-.presentation {
+.content {
+    background-color:#fff;
     width:50%;
     margin-left:auto;
     margin-right:auto;
+}
+
+.presentation {
+    width:40%;
+    margin-left:auto;
+    margin-right:auto;
     line-height:1.5em;
-    font-size:13px;
+    font-size:14px;
     letter-spacing:.25px;
+    text-align:center;
+
+    
+
 }
 
 .presentation-header {
@@ -48,7 +72,7 @@ body {
     top:0;
     width:100%;
     color:#CCC;
-    background-color:#5F9EA0;
+   # background-color:#5F9EA0;
 }
 
 ul {
@@ -57,25 +81,41 @@ ul {
     padding:0;
     margin-left:auto;
     margin-right:auto;
-    width:50%;
     text-align:center;
 }
 li {
     float:left;
     display:inline-block;
+    border-style:solid;
+    border-radius:10px;
+    border-width:1px;
+    border-color:#fff;
+    margin:15px;
+    margin-left:20px;
+    margin-right:20px;
 }
 li a {
     display:block;
     color:white;
     text-align:center;
-    padding: 14px 16px;
+    padding: 5px 10px;
     text-decoration:none;
 }
 li a:hover {
     background-color: white;
     color:#ccc;
     display:block;
+    border-radius:10px;
+    border-style:solid;
+    border-width:1px;
 }
 .active {
     background-color:#FFF;
 }
+
+.table {
+    display:table;
+    margin:0 auto;
+}
+.black-text {
+    color:#ccc;
