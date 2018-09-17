@@ -21,14 +21,12 @@ body {
 
 
 }
-
 .content {
     background-color:#fff;
     width:50%;
     margin-left:auto;
     margin-right:auto;
 }
-
 .presentation {
     width:40%;
     margin-left:auto;
@@ -37,11 +35,7 @@ body {
     font-size:14px;
     letter-spacing:.25px;
     text-align:center;
-
-    
-
 }
-
 .presentation-header {
     text-align:center;
     font-size:100px;
@@ -49,7 +43,6 @@ body {
     letter-spacing:1.4px;
     
 } 
-
 .img-circle {
     border-radius:50%;
     height:150px;
@@ -60,7 +53,6 @@ body {
     margin-bottom:30px;
     margin-top:30px;
 }
-
 .bar {
     height:1px;
     background:white;
@@ -74,7 +66,6 @@ body {
     color:#CCC;
    # background-color:#5F9EA0;
 }
-
 ul {
     list-style-type:none;
     margin:0;
@@ -112,10 +103,25 @@ li a:hover {
 .active {
     background-color:#FFF;
 }
-
 .table {
     display:table;
     margin:0 auto;
 }
 .black-text {
     color:#ccc;
+}
+.project-list {
+    text-align: center;
+    list-style-type: none;
+    border: 1px solid;
+    border-bottom: none;
+    
+}
+.project-list li {
+    float: none;
+    display: inline-block;
+    width: 40%;
+}
+.list-header {
+    font-size: 21px;
+}
