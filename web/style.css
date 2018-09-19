@@ -64,7 +64,7 @@ body {
     top:0;
     width:100%;
     color:#CCC;
-   # background-color:#5F9EA0;
+   # background-color:#2F4F4F;
 }
 ul {
     list-style-type:none;
@@ -124,4 +124,36 @@ li a:hover {
 }
 .list-header {
     font-size: 21px;
+}
+
+.projects {
+    margin:50px;
+    color:#ccc;
+}
+
+.project-container {
+    width:75%;
+    margin-left:auto;
+    margin-right:auto;
+    
+}	
+
+.project-header {
+    font-size:1em;
+    text-align:center;
+}
+
+.float-left {
+    float:left;
+    display:inline;
+}
+
+.float-right {
+    float:right;
+    display:inline;
+}
+	
+.img-project {
+    overflow:hidden;
+    width:100%;
 }
