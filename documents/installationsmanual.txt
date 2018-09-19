@@ -1,0 +1,39 @@
+Krav: Linux, Python3, Flask, Jinja2, pip
+
+1. Installera Python3
+2. Installera pip
+3. Installera Flask och Jinja2
+4. Installera portfoliion från git
+5. Förklara hur man lägger till projekt
+6. Förklara rätt formatering för projektfiler
+7. Felsökning
+
+
+
+
+
+1. Installera Python3 genom att skriva förjande kommando i terminalen:
+user@computer:~$ sudo apt install python3
+
+Updatera python3 genom att skriva:
+user@computer:~$ sudo apt update && sudo apt upgrade python3
+
+2. Installera pip genom att skriva följande i terminalen:
+user@computer:~$ sudo apt install python-pip
+
+3. Flask och Jinja2 installeras med pip. Öppna terminalen och skriv:
+user@computer:~$ pip install Flask
+
+Skriv sedan:
+user@computer:~$ pip list
+
+En lista över installerade paket bör visas. Kontrollera att både Flask och Jinja2 finns i listan.
+Pip list.png
+Ifall något av paketen saknas så skriv:
+user@computer:~$ pip install %paketnamn%
+
+4.Öppna mappen du vill installera portfolion i. Högerklicka i mappen och tryck på "Open in terminal". Skriv "git clone %länk till portfolion på gitlab%" i terminalen.
+
+
+
+
