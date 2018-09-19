@@ -2,8 +2,8 @@ body {
     margin:0px;
     font-family: Verdana, Geneva, sans-serif;
     font-family: 'Advent Pro';
-   # background-color:#5F9EA0;
     color:#F5F5F5;
+    background-color:#fff;
 }
 
 .main {
@@ -22,7 +22,7 @@ body {
 
 }
 .content {
-    background-color:#fff;
+    #background-color:#fff;
     width:50%;
     margin-left:auto;
     margin-right:auto;
