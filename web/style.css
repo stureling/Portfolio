@@ -178,21 +178,6 @@ li a:hover {
     width:100%;
     color:#CCC;
 }
-a:link {
-    color: white;
-}
-
-a:visited {
-    color:#fff;
-}
-
-a:hover {
-    color:white;
-}
-
-a:active {
-    color:#fff;
-}
 
 .img-full-width {
     height:100px;

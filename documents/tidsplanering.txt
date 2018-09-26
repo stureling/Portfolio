@@ -1,0 +1,37 @@
+Vecka 39
+Moment					Tidsåtgång	Delmål
+Utkastet av projektplanen färdigställt		4h	 18-06-27
+Bidrag till gemensamma installationsmanualen 	2h	 18-06-28
+
+
+Vecka 40
+Moment					Tidsåtgång	Delmål
+Skapat JSON-dokument med datastruktur		2h	18-10-01
+
+Funktioner load, get_project_count,		4h	18-10-02
+get_project, get_techniques, get
+technique_stats färdigställda.
+
+Searchfunktionen färdigställd			4h	18-10-03
+
+Datalagret testat och klart.			2h	18-10-04
+
+Projektplan färdigställd och korrigerad.	2h	18-10-04
+
+
+Vecka 41
+Moment					Tidsåtgång	Delmålw
+Research av Bootstrap eller likande		3h	18-10-08
+färdigställd.
+Enklare sida med full funktionalitet byggd.	30h	18-10-12
+
+
+Vecka 42
+Moment					Tidsåtgång	Delmål
+Presentationslagret klart. Testat och		30h	18-10-17
+interagerar väl med datalagret.
+
+Systemdokumentation färdigställd		10h	18-10-17
+
+Testdokumentation och reflektionsdokument	15h	18-10-22	
+färdigställt.
