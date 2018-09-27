@@ -3,4 +3,8 @@
 *.out
 *.pdf
 .*#
+*.aux
+*.fls
+*.xdv
+*.toc
 installationsmanual
