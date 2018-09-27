@@ -1,7 +1,7 @@
 \documentclass{TDP003mall}
 \definecolor{terminalgreen}{HTML}{8AE234}
 
-\newcommand{\version}{Version 1.0}
+\newcommand{\version}{Version 0.1}
 \author{Eric Jönsson, \url{erijo137@student.liu.se}\\
   Ida Bergquist, \url{idabe112@student.liu.se}}
 \title{Projektplan}
@@ -34,6 +34,7 @@ kommer att skapas med hjälp av micro-frameworket Flask som backend.
 Hemsidan delas upp i två delar, ett datalager och ett presentationslager.
 
 Projektet skapas som huvuddelen av kursen TDP003.
+
 \subsection{Datalagret}
 All information om de projekt som skall presenteras på hemsidan kommer
 att ligga i en JSON-fil på servern. Datalagret kommer att interagera
@@ -47,17 +48,20 @@ Tekniker som används:
 \item Git
 \item JSON
 \end{itemize}
+
 \subsection{Presentationslagret}
 Efter att datalagret har läst in den information som begärts av användaren
 i minne kommer presentationslagret att ta vidare för att skapa en
 användarvänlig presentation på själva hemsidan. Hemsidan kommer bestå av
 följande sidor enligt systemspecifikation:
+
 \begin{itemize}
 \item Förstasida med översikt och bilder från de senaste projekten
 \item Söksida med lista över alla projekt samt med möjlighet till filtrering
 \item Projektsida med fullständig information om det projekt som visas
 \item Tekniksida med information projekt utefter använda tekniker
 \end{itemize}
+\newpage
 Tekniker som används:
 \begin{itemize}
 \item Flask
@@ -67,20 +71,88 @@ Tekniker som används:
 \item Bootstrap
 \item JSON
 \end{itemize}
+
 \section{Arbetsplan}
+
 \subsection{Arbetsmetodik}
 Vi programmerar främst vid var sin dator och delar upp arbetet mellan
 varandra på funktioner eller filer för att maximera effektiviteten.
+
 \section{Tidsplanering}
+
+\subsection{Deadlines}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|l|X|}\hline
+    \textbf{Datum} & \textbf{Moment} \\\hline
+    18-09-13 & Planeringsdokument inlämnad. \\\hline
+    18-09-20 & LoFi-prototyp inlämnad. \\\hline
+    18-09-20 & Installationsmanual inlämmnad. \\\hline
+    18-09-27 & Första utkast av projektplanen inlämnad. \\\hline
+    18-09-27 & Första versionen av den gemensamma installationsmanualen klar. \\\hline
+    18-10-04 & Bidrag till den gemensamma installationsmanualen eller testerna av portfolion inlämnade. \\\hline
+    18-10-04 & Eventuella brister i den gemensamma installationsmanualen korrigerade. \\\hline
+    18-10-04 & Eventuella brister i projektplanen korrigerade och senaste versionen inlämnad. \\\hline
+    18-10-05 & Datalagret godkänt av assistent. \\\hline
+    18-10-18 & Portfolion tillgänglig via OpenShift. \\\hline
+    18-10-18 & Första versionen av systemdokumentationen inlämnad. \\\hline
+    18-10-23 & Eventuella brister i systemdokumentationen korrigerade och senaste versionen inlämnad. \\\hline
+    18-10-23 & Testdokumentation inlämnad. \\\hline
+    18-10-23 & Individuellt reflektionsdokument inlämnat. \\\hline
+\end{tabularx}
+\end{table}
+\newpage
+\subsection{Milstolpar}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|l|X|}\hline
+    \textbf{Datum} & \textbf{Moment} \\\hline
+    18-09-18 & 3/4 sidor av LoFi-prototypen klara och länkar till varandra. \\\hline
+    18-09-18 & Utkastet till installationsmanualen ska kunna följas för att installera Flask och Jinja2. \\\hline
+    18-09-25 & Mallen av projektpanen ska vara tillräckligt genomarbetad att text kan enkelt läggas till i respektive sektion. \\\hline
+    18-10-02 & Alla funktioner i datalagret ska fungera utom search. \\\hline
+    18-10-10 & Presentationslagret ska generera projektsidor och en tekniksida med en lista över alla projektsidor. \\\hline
+\end{tabularx}
+\end{table}
+
+
+\subsection{Vecka 38}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|l|X|l|l|}
+\hline
+\textbf{Prio} & \textbf{Moment} & \textbf{Tidsåtgång} & \textbf{Färdigställt}\\\hline
+1 & Färdigställa Lo-Fi prototyp & 5h & 18-09-19  \\\hline
+2 & Göra grundläggande installationsmanual samt bekanta
+oss med flask och jinja & 6-8h & 18-09-19 \\\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|X|r|}\hline
+    \textbf{Delmoment} & \textbf{ Planerad arbetsdag} \\\hline
+    Skapa en HTML-sida för startsidan av LoFi-prototypen. & 18-09-17 \\\hline
+    Skapa en HTML-sida för listsidan av LoFi-prototypen. & 18-09-17 \\\hline
+    Skapa en HTML-sida för söksidan av LoFi-prototypen. & 18-09-18 \\\hline
+    Skapa och färdigställa installationsmanualen. & 18-09-18 \& 18-09-19 \\\hline
+    Skapa en HTML-sida för projektsidan av LoFi-prototypen. & 18-09-19 \\\hline
+\end{tabularx}
+\end{table}
 
 \subsection{Vecka 39}
 \begin{table}[!h]
 \begin{tabularx}{\linewidth}{|l|X|l|l|}
 \hline
 \textbf{Prio} & \textbf{Moment} & \textbf{Tidsåtgång} & \textbf{Färdigställt}\\\hline
-1& Utkastet av projektplanen färdigställt & 4h	& 18-06-27 \\\hline
-2& Bidrag till gemensamma installationsmanualen & 2h &  18-06-28 \\\hline
+1& Utkastet av projektplanen färdigställt & 4h	& 18-09-27 \\\hline
+2& Bidrag till gemensamma installationsmanualen & 2h &  18-09-28 \\\hline
+\end{tabularx}
+\end{table}
 
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|X|r|}\hline
+    \textbf{Delmoment} & \textbf{ Planerad arbetsdag} \\\hline
+    Göra en mall för projektplanen. & 18-09-25 \\\hline
+    Fylla mallen för att slutföra första utkastet. & 18-09-26 \& 18-09-27 \\\hline
+    Göra ett bidrag till den gemensamma installationsmanualen. & 18-09-26 \\\hline
+    Påbörja datalagret. Skapa en JSON-fil och bekanta oss med tekniken & 18-09-27 \& 18-09-28 \\\hline
 \end{tabularx}
 \end{table}
 \newpage
@@ -90,9 +162,19 @@ varandra på funktioner eller filer för att maximera effektiviteten.
 \textbf{Prio} & \textbf{Moment} & \textbf{Tidsåtgång} & \textbf{Färdigställt}\\\hline
 1& Datalagret testat och klart. & 2h & 18-10-04 \\\hline
 2& Projektplan färdigställd och korrigerad. & 2h & 18-10-04 \\\hline
-3& Skapat JSON-dokument med datastruktur & 2h & 18-10-01 \\\hline
-4& Funktioner load, get\_project\_count, get\_project, get\_techniques, get\_technique\_stats färdigställda. & 4h & 18-10-02 \\\hline
-5& Searchfunktionen färdigställd & 4h & 18-10-03 \\\hline
+3& Searchfunktionen färdigställd & 4h & 18-10-03 \\\hline
+4& Funktioner load, get\_project\_count, get\_project, get\_techniqes, get\_technique\_stats färdigställda. & 4h & 18-10-02 \\\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|X|r|}\hline
+    \textbf{Delmoment} & \textbf{ Planerad arbetsdag} \\\hline
+    Ha en färdig datastruktur i JSON-filen så att vi kan skapa funktioner till den. & 18-10-01 \\\hline
+    Skapa och färdigställa funktionerna load, get\_project\_count, get\_project, get\_techniques, get\_technique\_stats.  & 18-10-01 \& 18-10-02 \\\hline
+    Skapa och färdigställa search-funktionen & 18-10-03 \\\hline
+    Korrigera projektplanen och lämna in nästa version. & 18-10-03 \& 18-10-04 \\\hline
+    Testa datalagret & 18-10-04 \\\hline
 \end{tabularx}
 \end{table}
 
@@ -100,21 +182,44 @@ varandra på funktioner eller filer för att maximera effektiviteten.
 \begin{table}[!h]
 \begin{tabularx}{\linewidth}{|l|X|l|l|}\hline
 \textbf{Prio} & \textbf{Moment} & \textbf{Tidsåtgång} & \textbf{Färdigställt}\\\hline
-1& Research av Bootstrap eller likande färdigställd. & 3h & 18-10-08 \\\hline
-2& Enklare sida med full funktionalitet byggd. & 30h & 18-10-12 \\\hline
+1& Enklare sida med full funktionalitet byggd. & 30h & 18-10-12 \\\hline
+2& Research av Bootstrap. & 3h & 18-10-08 \\\hline
 \end{tabularx}
 \end{table}
 
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|X|r|}\hline
+    \textbf{Delmoment} & \textbf{ Planerad arbetsdag} \\\hline
+    Lära oss hur bootstrap fungerar. & 18-10-08 \\\hline
+    Skapa och färdigställa de individuella projektsidorna. & 18-10-08 \& 18-10-09 \\\hline
+    Skapa och färdigställa sidan med listorna över de olika projekten. & 18-10-09 \& 18-10-10 \\\hline
+    Skapa och färdigställa söksidan. & 18-10-10 \& 18-10-11 \\\hline
+    Skapa och färdigställa startsidan. & 18-10-11 \& 18-10-12 \\\hline
+\end{tabularx}
+\end{table}
+\newpage
 \subsection{Vecka 42}
 \begin{table}[!h]
 \begin{tabularx}{\linewidth}{|l|X|l|l|}
 \hline
 \textbf{Prio} & \textbf{Moment} & \textbf{Tidsåtgång} & \textbf{Färdigställt}\\\hline
-1& Presentationslagret klart. Testat och interagerar väl med datalagret. & 30h & 18-10-17 \\\hline
-2& Systemdokumentation färdigställd. &10h & 18-10-17 \\\hline
+1& Presentationslagret klart. Testat och fungerar med datalagret. & 10h & 18-10-17 \\\hline
+2& Systemdokumentation färdigställd. & 8h & 18-10-17 \\\hline
 3& Testdokumentation och reflektionsdokument färdigställt. & 15h & 18-10-22 \\\hline
 4& Korrigera eventuella brister och fel i systemdokumentationen. & 3h & 18-10-22 \\\hline
 \end{tabularx}
 \end{table}
-\end{document}
 
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|X|r|}\hline
+    \textbf{Delmoment} & \textbf{ Planerad arbetsdag} \\\hline
+    Ändra utseendet på hemsidan så att den liknar LoFi-prototypen. & 18-10-15 \\\hline
+    Skapa  en mall för systemdokumentation och skriva ett utkast för den. & 18-10-15 \\\hline
+    Testa och färdigställa presentationslagret. & 18-10-16 \& 18-10-17 \\\hline
+    Fyll systemdokumentationen och färdigställ den. & 18-10-16 \& 18-10-17 \\\hline
+    Skriva testdokumentationen. & 18-10-18 \& 18-10-19 \& 18-10-22 \\\hline
+    Skriva reflektionsdokumentet. & 18-10-19 \& 18-10-22 \\\hline
+\end{tabularx}
+\end{table}
+
+\end{document}
