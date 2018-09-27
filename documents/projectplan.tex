@@ -26,13 +26,51 @@ Eric Jönsson}
 
 \section{Introduktion}
 \subsection{Beskrivning}
-\subsection{Datalagret}
-\subsection{Presentationslagret}
+Projektet går ut på att skapa en portföljhemsida där man kan
+ladda upp och presentera färdigställda projekt tillsammans med bilder,
+information, samt de tekniker som använts för att skapa projektet. Hemsidan
+kommer att skapas med hjälp av micro-frameworket Flask som backend.
 
+Hemsidan delas upp i två delar, ett datalager och ett presentationslager.
+
+Projektet skapas som huvuddelen av kursen TDP003.
+\subsection{Datalagret}
+All information om de projekt som skall presenteras på hemsidan kommer
+att ligga i en JSON-fil på servern. Datalagret kommer att interagera
+med denna fil för att bland annat läsa in saker såsom tekniker som använts
+i projektet i fråga, skapa listor av alla projekt genom en sökning och
+dylikt.
+
+Tekniker som används:
+\begin{itemize}
+\item Python3
+\item Git
+\item JSON
+\end{itemize}
+\subsection{Presentationslagret}
+Efter att datalagret har läst in den information som begärts av användaren
+i minne kommer presentationslagret att ta vidare för att skapa en
+användarvänlig presentation på själva hemsidan. Hemsidan kommer bestå av
+följande sidor enligt systemspecifikation:
+\begin{itemize}
+\item Förstasida med översikt och bilder från de senaste projekten
+\item Söksida med lista över alla projekt samt med möjlighet till filtrering
+\item Projektsida med fullständig information om det projekt som visas
+\item Tekniksida med information projekt utefter använda tekniker
+\end{itemize}
+Tekniker som används:
+\begin{itemize}
+\item Flask
+\item Jinja2
+\item Python3
+\item Git
+\item Bootstrap
+\item JSON
+\end{itemize}
 \section{Arbetsplan}
 \subsection{Arbetsmetodik}
-\subsection{Tekniker}
-
+Vi programmerar främst vid var sin dator och delar upp arbetet mellan
+varandra på funktioner eller filer för att maximera effektiviteten.
 \section{Tidsplanering}
 
 \subsection{Vecka 39}
