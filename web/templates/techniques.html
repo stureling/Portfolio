@@ -1,0 +1,28 @@
+{% extends "main_template.html" %}
+{% block header %}
+<title> Techniques</title>
+{% endblock %}
+
+{% block body %}
+<p>Techniques in DB:</p>
+<ul>
+  <form action="{{ url_for("techniques")}}" method="POST">
+  {% for key in technique_data %}
+  <li>{{key}}  <input type="checkbox" name="technique" value="{{key}}"
+		      {% if key in techniques %}checked
+		      {% endif %}></li>
+  {% endfor %}
+  <input type="submit" value="Submit">
+  </form>
+</ul>
+
+<p>Relevant projects {{techniques}}:</p>
+<ul>
+  {% for current_project in displayed_projects %}
+  <li><a href="{{ url_for("project", 
+project_id=current_project["project_id"]) }}">{{current_project}}</a></li>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}
