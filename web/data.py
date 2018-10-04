@@ -76,7 +76,15 @@ def get_techniques(db):
                 techniques.append(technique)
     techniques.sort()
     return techniques
-        
+
+def get_searchfields(db):
+    search_fields = []
+    for project in db:
+        for key in project:
+            if key not in search_fields:
+                search_fields.append(key)
+    return search_fields
+
 def get_technique_stats(db):
     """Collects and returns statistics for all techniques in 
     the specified project list."""
