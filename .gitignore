@@ -15,7 +15,7 @@ web/lib64
 web/lib
 web/venv
 web/__pycache__
+web/pip-selfcheck.json
 pyvenv.cfg
 
 *.fdb_latexmk		
-web
