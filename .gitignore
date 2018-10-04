@@ -2,9 +2,20 @@
 *.log
 *.out
 *.pdf
-.*#
+*#
 *.aux
 *.fls
 *.xdv
 *.toc
-installationsmanual
+
+# Python venv files
+web/bin
+web/include
+web/lib64
+web/lib
+web/venv
+web/__pycache__
+pyvenv.cfg
+
+*.fdb_latexmk		
+web
