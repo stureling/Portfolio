@@ -27,33 +27,42 @@ def get_project(db, i_d):
 def search(db, sort_by="start_date", sort_order="desc", techniques=None,
            search=None, search_fields=None):
     
-    filtered_projects = []
+    technique_projects = []
+    search_projects = []
+    output = []
     reverse_order = False
 
     if sort_order == "desc":
         reverse_order = True
-        
-    if techniques != None and len(techniques) > 0:
+
+    # Filter by technique    
+    if techniques and len(techniques) > 0:
         techniques = set(techniques)
         for project in db:
             if set(project["techniques_used"]) >= techniques:
-                filtered_projects.append(project)
-                
-
+                technique_projects.append(project)              
     # Filter by search
-    if search != None:
+    if search:
         for project in db:
             append = False
             for field in search_fields:
                 field_content =  str(project.get(field))
                 if re.search(search, field_content, re.IGNORECASE):
                     append = True
-            if ((project not in filtered_projects) and (append == True)):
-                filtered_projects.append(project)
-    if search == None and techniques == None:
-        filtered_projects = db
+            if append == True:
+                search_projects.append(project)
+
+    # Collate results
+    if search and not techniques:
+        output = search_projects
+    elif techniques and not search:
+        output = technique_projects
+    elif search and techniques:
+        for project in db:
+            if project in technique_projects and search_projects:
+                output.append(project)
                         
-    return sorted(filtered_projects, key=lambda project: project[sort_by],
+    return sorted(output, key=lambda project: project[sort_by],
                   reverse=reverse_order)
         
 def get_techniques(db):

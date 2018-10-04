@@ -1,32 +1,12 @@
-<!DOCTYPE html>
-<html lang="sv">
-  <head>
-    <meta charset="UTF-8">
-    <title>Presentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href='https://fonts.googleapis.com/css?family=Advent%20Pro' rel='stylesheet'>
- 
-    <div class="fixedheader">
-      <div class="table">
-      <ul><li><a href="index.html">INDEX</a></li>
-	<li><a href="list.html">TECHNIQUES</a></li>
-	<li><a href="search.html">SEARCH</a></li>
-      </ul>
-      </div>
-    </div>
-    <div class="main" style="height:100vh;">
-      <div class="presentation">
-	<h1 class="presentation-header">PROJECT 1</h1>
-	<img class="img-circle" src="./images/image.jpg" alt="img">
-	<div>Uploaded by Ida, 2018-09-20 10:33</div>
-	<div>Techniques: Python, Javascript</div>
-	<div><p>	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-	Cras tincidunt mauris quis elit faucibus condimentum. Etiam
-	  iaculis porttitor fermentum.	Lorem ipsum dolor sit amet,
-	  consectetur adipiscing elit.
-	Cras tincidunt mauris quis elit faucibus condimentum. Etiam
-	iaculis porttitor fermentum.</p></div>
-    </div>
-    </div>
+{% extends "main_template.html" %}
+{% block title %}
+<title>{{project["project_id"]}}</title>
+{% endblock %}
 
+{% block body %}
+<ul>
+  {% for key, value in project.items() %}
+  <li>{{ key }}: {{ value }}</li>
+  {% endfor %}
+</ul> 
+{% endblock %}
