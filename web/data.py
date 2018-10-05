@@ -10,6 +10,8 @@ def load(filename):
             db = sorted(db, key=lambda project: project["project_id"])
     except FileNotFoundError:
         return None
+    except IsADirectoryError:
+        return None
     return db
         
 def get_project_count(db):
@@ -35,12 +37,16 @@ def search(db, sort_by="start_date", sort_order="desc", techniques=None,
     if sort_order == "desc":
         reverse_order = True
 
+    if not search_fields and search_fields != []:
+        search_fields = get_searchfields(db)
+
     # Filter by technique    
     if techniques and len(techniques) > 0:
         techniques = set(techniques)
         for project in db:
             if set(project["techniques_used"]) >= techniques:
-                technique_projects.append(project)              
+                technique_projects.append(project)
+                
     # Filter by search
     if search:
         for project in db:
@@ -59,8 +65,10 @@ def search(db, sort_by="start_date", sort_order="desc", techniques=None,
         output = technique_projects
     elif search and techniques:
         for project in db:
-            if project in technique_projects and search_projects:
+            if project in technique_projects and project in search_projects:
                 output.append(project)
+    elif not search and not techniques:
+        output = db
                         
     return sorted(output, key=lambda project: project[sort_by],
                   reverse=reverse_order)

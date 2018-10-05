@@ -26,20 +26,22 @@ def list():
         search = request.form["search"]
         techniques = request.form.getlist("technique")
         search_fields = request.form.getlist("field")
-        print(techniques)
-        print(search_fields)
         requested_projects = data.search(db, search=search,
                                          search_fields=search_fields,
                                          techniques=techniques)
-
-        print(requested_projects)
-        print(techniques)
-    return render_template("list.html",
-                           technique_data=data.get_techniques(db),
-                           search_fields=data.get_searchfields(db),
-                           techniques = techniques,
-                           search = search,
-                           requested_projects = requested_projects)
+        return render_template("list.html",
+                               technique_data=data.get_techniques(db),
+                               search_fields=data.get_searchfields(db),
+                               techniques = techniques,
+                               search = search,
+                               requested_projects = requested_projects)
+    else:
+        return render_template("list.html",
+                               technique_data=data.get_techniques(db),
+                               search_fields=data.get_searchfields(db),
+                               techniques = [],
+                               search = "",
+                               requested_projects = [])
 
 @app.route("/project/<project_id>")
 def project(project_id):
