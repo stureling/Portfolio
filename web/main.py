@@ -1,41 +1,13 @@
 from flask import Flask, render_template, url_for, request, redirect
-from flask import abort
 import data
 
-# The base flask application
 app = Flask(__name__)
 
-# The JSON data loaded in a python
-# friendly format
 db = data.load("data.json")
-
-def get_menu():
-    """ Builds a list of routing strings for any
-    route that is specified as /x and not /x/* 
-    for use in the navigation menu.
-    """
-    menu_routes = []
-    for rule in app.url_map.iter_rules():
-        rule = str(rule).split("/")
-        if len(rule) == 2 and rule[1] != "":
-            menu_routes.append(rule[1])
-        elif rule[1] == "":
-            menu_routes.append("index")
-    return menu_routes
-
-@app.route("/bootstrap")
-def bootstrap():
-    return render_template("index_bootstrap.html")
-@app.route("/hej/<asd>")
-def hej(quest):
-    pass
 
 @app.route("/")
 def index():
-    """ Builds the index routing with menu items."""
-    menu_routes = get_menu()
-    database=db
-    return render_template("index.html", **locals())
+    return render_template("index.html", database=db)
 
 @app.route("/techniques")
 def techniques():
@@ -45,39 +17,42 @@ def techniques():
         temp_list = [e]
         temp_list.append(data.search(db, techniques=[e]))
         master_list.append(temp_list)
-    return render_template("techinques.html", master_list=master_list)
+    for i in master_list:
+        if len(i[1]) > len(master_list[0][1]):
+            new_pos = master_list.pop(master_list.index(i))
+            master_list.insert(0,new_pos)
+    return render_template("techniques.html", master_list=master_list)
 
 @app.route("/list", methods=["POST", "GET"])
 def list():
-    menu_routes = get_menu()
-    technique_data = data.get_techniques(db)
-    search_fields = data.get_searchfields(db)
 
     if request.method == "POST":
         search = request.form["search"]
         techniques = request.form.getlist("technique")
-        searched_fields = request.form.getlist("field")
+        search_fields = request.form.getlist("field")
         requested_projects = data.search(db, search=search,
-                                         search_fields=searched_fields,
+                                         search_fields=search_fields,
                                          techniques=techniques)
-        return render_template("list.html", **locals())
+        return render_template("list.html",
+                               technique_data=data.get_techniques(db),
+                               search_fields=data.get_searchfields(db),
+                               techniques = techniques,
+                               search = search,
+                               requested_projects = requested_projects)
     else:
-        search = ""
-        techniques = []
-        requested_projects = []
-        return render_template("list.html", **locals())
-
+        return render_template("list.html",
+                               technique_data=data.get_techniques(db),
+                               search_fields=data.get_searchfields(db),
+                               techniques = [],
+                               search = "",
+                               requested_projects = [])
 
 @app.route("/project/<project_id>")
 def project(project_id):
-    menu_routes = get_menu()
-    try:
-        project = data.get_project(db, int(project_id))
-    except:
-        abort(404)
-    if project:
-        return render_template("project.html", **locals())
-                           
+    if data.get_project(db, int(project_id)):
+        return render_template("project.html",
+                           project=data.get_project(db,
+                                            int(project_id)))
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("page_not_found.html"), 404

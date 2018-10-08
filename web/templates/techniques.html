@@ -1,22 +1,29 @@
 {% extends "main_template.html" %}
 {% block header %}
-<title> Techniques</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><title> Techniques</title>
 {% endblock %}
 
 {% block body %}
-{% for technique in master_list %}
-<h3> {{technique[0]}} </h3>
-{%for project in techique[1] %}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">{{project['project_name']}}</h5>
-        <p class="card-text">{{project['short_discription']}}</p>
-        <a href="/project/{{project['project_id']}}" class="btn btn-primary">Read more</a>
+<div class="container">
+{% for e in master_list %}
+    <h3> {{e[0]|capitalize}} </h3>
+    <div class="row justify-content-start">
+    {%for i in e[1] %}
+        <div class="col-auto">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{url_for('static', filename='images/test.jpg')}}" alt="{{i['small_image']}}">
+                <div class="card-body">
+                    <h4 class="card-title">{{i['project_name']}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{i['end_date']}}</h6>
+                    <p class="card-text">{{i['short_description']}}</p>
+                    <a href="/project/{{i['project_id']}}" class="card-link">Read more</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
     </div>
 </div>
-    {% endfor %}
-    {% endfor %}
-    <br>
+{% endfor %}
+</div>
+<br>
 {% endblock %}
-
