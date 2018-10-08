@@ -8,39 +8,50 @@ main_dir = "./static/images/projects/"
 thumbnail_dir = "thumbnails/"
 # How often to run, in seconds
 script_frequency = 2
+# Format string of new file
+save_string =  lambda f, directory, size: (directory +
+                                            f[0] + "_" + str(size[0]) +
+                                            "x" + str(size[1]) + "." + f[1])
 
 def check_files(directory):
-    return [f for f in os.listdir(directory)
+    """ Returns every file in a directory without
+    its file suffix."""
+    return [f.split(".") for f in os.listdir(directory)
                      if os.path.isfile(directory + f)]
 
 def update_dir(directory, sizes=[(286, 180), (800, 400)]):
-    previous_files = check_files(directory)
+    """ Checks that every file in a given directory has
+    thumbnails generated in its subfolder, the global variable
+    thumbnails_dir."""
+    files = check_files(directory)
+    # Uncomment next line if running script standalone
     time.sleep(script_frequency)
-    new_files = check_files(directory)
-    found_files = [f for f in new_files if f not in previous_files]
-    print(found_files)
-    if len(found_files) > 0:
-        for f in found_files:
-            print("Found file: " + directory + f + ", making thumbnails...")
-            for size in sizes:
+    for f in files:
+        for size in sizes:
+            if not os.path.isfile(save_string(f, directory+thumbnail_dir, size)):
+                print("File: " + directory + ".".join(f)
+                      + " does not have a thumbnail,generating size: " + str(size))
                 get_thumb(directory, f, size)
     else:
-        print("No new files.")
+        print("No new thumbnails to generate.")
     return update_dir(directory)
 
 def get_thumb(directory, filename, size):
-    filename_noend = filename.split(".")[0]
     global thumbnail_dir
-    save_file = directory + thumbnail_dir + filename_noend
-    save_string = (save_file + "_" + str(size[0]) +
-                   "x" + str(size[1]) + ".jpg")
-    try:
-        with Image.open(directory + filename) as im:
+    try: 
+        with Image.open(directory + ".".join(filename) ) as im:
+            # Convert to thumbnail
             im.thumbnail(size)
-            print("Saving file to: ", save_string)
-            im.save(save_string ,"JPEG")
+            print("Saving file to: ",
+                  save_string(filename, directory +
+                              thumbnail_dir, size))
+            im.save(save_string(filename,
+                                directory + thumbnail_dir, size),
+                    im.format)
     except FileNotFoundError:
-        print("Invalid file.")
+        print("File not found.")
+    except IOError:
+        pass
 
 
 update_dir(main_dir)
