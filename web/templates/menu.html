@@ -1,0 +1,6 @@
+{% extends "main_template.html" %}
+<ul>
+  {% for link in links %}
+  <li><a href="{{url_for(link)}}"</a></li>
+	 {% endfor %}
+</ul>

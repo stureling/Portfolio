@@ -5,6 +5,15 @@
     {% endblock %}
   </head>
   <body>
+    <div class="fixedheader">
+      <div class="table">
+	<ul>
+	  {% for route in menu_routes %}
+	  <li><a href="{{ url_for(route) }}">{{ route }}</a></li>
+	  {% endfor %}
+	</ul>
+      </div>
+    </div>
     {% block body %}
     {% endblock %}
   </body>
