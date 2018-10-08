@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 	  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	  crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -82,11 +83,29 @@
   <div class="col-sm">
     </div>
 </div>
-<div class="container">
-    <div class="row justify-content-start">
+</div>
+<div class="container mw-100 bg-dark">
+  <div class="row text-center p-4">
+    <div class="col-sm text-light">
+      <i class="devicon-python-plain" style="font-size:4rem"></i>
+    </div>
+    <div class="col-sm text-light">
+      <i class="devicon-cplusplus-plain" style="font-size:4rem"></i>
+    </div>
+    <div class="col-sm text-light">
+      <i class="devicon-html5-plain" style="font-size:4rem"></i>
+    </div>
+  </div>
+</div>
+
+
+  <div class="jumbotron text-dark text-center bg-transparent">
+    <div class="display-2">Recent projects</div>
+    <div class="row">
+
     {%for i in projects %}
-        <div class="col-auto">
-            <div class="card text-center" style="width: 18rem;">
+        <div class="col-sm">
+            <div class="card text-center" style="width: 18em;">
               <img class="card-img-top"
 		   src="{{url_for('static',
 			filename='images/projects/thumbnails/3_286x180.jpg')}}" alt="{{i['small_image']}}">
@@ -98,8 +117,9 @@
                 </div>
             </div>
         </div>
-    {% endfor %}
-    </div>
+{% endfor %}
+</div>
+</div>
 </div>
 </div>
 <br>
