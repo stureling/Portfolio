@@ -9,15 +9,15 @@ db = data.load("data.json")
 def index():
     return render_template("index.html", database=db)
 
-@app.route("/techniques", methods=["GET", "POST"])
+@app.route("/techniques")
 def techniques():
-    techniques = request.form.getlist("technique")
-    return render_template("techniques.html",
-                           technique_data=data.get_techniques(db),
-                           techniques=techniques,
-                           displayed_projects=data.search(db,
-                                                          techniques=
-                                                          techniques))
+    master_list= []
+    technique_list = data.get_techniques(db)
+    for e in technique_list:
+        temp_list = [e]
+        temp_list.append(data.search(db, techniques=[e]))
+        master_list.append(temp_list)
+    return render_template("techinque.html", master_list=master_list)
 
 @app.route("/list", methods=["POST", "GET"])
 def list():
