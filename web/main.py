@@ -17,7 +17,7 @@ def techniques():
         temp_list = [e]
         temp_list.append(data.search(db, techniques=[e]))
         master_list.append(temp_list)
-    return render_template("techinque.html", master_list=master_list)
+    return render_template("techinques.html", master_list=master_list)
 
 @app.route("/list", methods=["POST", "GET"])
 def list():

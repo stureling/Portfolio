@@ -4,25 +4,19 @@
 {% endblock %}
 
 {% block body %}
-<p>Techniques in DB:</p>
-<ul>
-  <form action="{{ url_for("techniques")}}" method="POST">
-  {% for key in technique_data %}
-  <li>{{key}}  <input type="checkbox" name="technique" value="{{key}}"
-		      {% if key in techniques %}checked
-		      {% endif %}></li>
-  {% endfor %}
-  <input type="submit" value="Submit">
-  </form>
-</ul>
-
-<p>Relevant projects {{techniques}}:</p>
-<ul>
-  {% for current_project in displayed_projects %}
-  <li><a href="{{ url_for("project", 
-project_id=current_project["project_id"]) }}">{{current_project}}</a></li>
-  {% endfor %}
-</ul>
-
-
+{% for technique in master_list %}
+<h3> {{technique[0]}} </h3>
+{%for project in techique[1] %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{project['project_name']}}</h5>
+        <p class="card-text">{{project['short_discription']}}</p>
+        <a href="/project/{{project['project_id']}}" class="btn btn-primary">Read more</a>
+    </div>
+</div>
+    {% endfor %}
+    {% endfor %}
+    <br>
 {% endblock %}
+
