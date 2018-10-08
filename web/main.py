@@ -37,14 +37,15 @@ def index():
     database=db
     return render_template("index.html", **locals())
 
-@app.route("/techniques", methods=["GET", "POST"])
+@app.route("/techniques")
 def techniques():
-    menu_routes = get_menu()
-    techniques = request.form.getlist("technique")
-    technique_data = data.get_techniques(db)
-    displayed_projects = data.search(db, techniques=techniques)
-    return render_template("techniques.html", **locals())
-
+    master_list= []
+    technique_list = data.get_techniques(db)
+    for e in technique_list:
+        temp_list = [e]
+        temp_list.append(data.search(db, techniques=[e]))
+        master_list.append(temp_list)
+    return render_template("techinques.html", master_list=master_list)
 
 @app.route("/list", methods=["POST", "GET"])
 def list():
