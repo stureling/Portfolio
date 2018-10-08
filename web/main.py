@@ -5,6 +5,15 @@ app = Flask(__name__)
 
 db = data.load("data.json")
 
+@app.route("/bootstrap")
+def bootstrap():
+
+    projects = data.search(db, search="")
+    
+    return render_template("index_bootstrap2.html", **locals())
+
+#    return render_template("index_bootstrap2.html")
+
 @app.route("/")
 def index():
     return render_template("index.html", database=db)
