@@ -1,9 +1,15 @@
 from flask import Flask, render_template, url_for, request, redirect
+from flask import session, abort, flash, escape
 import data
+import os
+
 
 app = Flask(__name__)
-
+app.secret_key = os.urandom(64)
 db = data.load("data.json")
+
+# Database file of all the users and their passwords
+users = data.load_users("users.json")
 
 @app.route("/bootstrap")
 def bootstrap():
@@ -54,10 +60,34 @@ def project(project_id):
         return render_template("project.html",
                            project=data.get_project(db,
                                             int(project_id)))
+
+@app.route("/add")
+def add():
+    if "logged_in" not in session:
+        abort(401)
+    global db
+    return "Logged in as",  escape(session.get("logged_in"))
+    return render_template("add.html", **locals())
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    error = None
+    if request.method == "POST":
+        for user in users:
+            if (request.form["username"] == user["username"]
+                and request.form["password"] == user["password"]):
+                session["logged_in"] = request.form["username"]
+                break
+        
+    return render_template("login.html", error=error)
+    
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("page_not_found.html"), 404
 
+@app.errorhandler(401)
+def invalid_login(error):
+    return render_template("access_denied.html"), 401
 if __name__ == "__main__":
     app.run(debug=True)
 

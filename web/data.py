@@ -13,7 +13,18 @@ def load(filename):
     except IsADirectoryError:
         return None
     return db
-        
+
+def load_users(filename):
+    """ Loads JSON formatted user data from a file"""
+    try:
+        with open(filename, "r") as json_db:
+            db = json.load(json_db)
+    except FileNotFoundError:
+        return None
+    except IsADirectoryError:
+        return None
+    return db
+
 def get_project_count(db):
     """ Retrieves the number of projects in a project list."""
     return len(db)

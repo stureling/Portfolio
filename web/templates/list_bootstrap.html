@@ -131,12 +131,16 @@
       
     {%for project in requested_projects %}
     <div class="col-sm">
-      <div class="card text-center bg-white h-100 bg-shadow" style="width: 18em;">
+      <div class="card text-left bg-white h-100 bg-shadow" style="width: 18em;">
         <img class="card-img-top"
 	     src="{{url_for('static',
-		  filename='images/projects/thumbnails/2_286x180.jpg')}}" alt="{{project['small_image']}}">
+		  filename='images/projects/thumbnails/1_286x180.jpg')}}" alt="{{project['small_image']}}">
         <div class="card-body">
-          <h4 class="card-title text">{{project['project_name']}}</h5>
+	  <div class="row">
+	    <p class="text-warning font-weight-bold">
+	      {{project['techniques_used'][0]}}</p>
+	    </div>
+          <h4 class="card-title font-weight-bold">{{project['project_name']}}</h5>
 <p class="card-text text-muted">{{project['short_description']}}</p>
 <a href="/project/{{project['project_id']}}"><button type="button" class="btn btn-primary">Read more</button></a>
 </div>
