@@ -11,7 +11,8 @@ def index():
 
 @app.route("/techniques")
 def techniques():
-    master_list= []
+    """Creates and sorts a list of all project by the technique used. Then it displays a page of all projects"""
+    master_list = []
     technique_list = data.get_techniques(db)
     for e in technique_list:
         temp_list = [e]
@@ -20,12 +21,12 @@ def techniques():
     for i in master_list:
         if len(i[1]) > len(master_list[0][1]):
             new_pos = master_list.pop(master_list.index(i))
-            master_list.insert(0,new_pos)
+            master_list.insert(0, new_pos)
     return render_template("techniques.html", master_list=master_list)
 
 @app.route("/list", methods=["POST", "GET"])
 def list():
-
+    """Creates a page where you can search the database for projects and sort them"""
     if request.method == "POST":
         search = request.form["search"]
         techniques = request.form.getlist("technique")

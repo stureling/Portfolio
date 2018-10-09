@@ -77,5 +77,82 @@
     "end_date": "2009-09-07",
     "project_id": 4,
     "big_image": "XXX"
+  },
+  {
+    "start_date": "2009-09-05",
+    "short_description": "no",
+    "course_name": "OKÄNT",
+    "long_description": "no no no",
+    "group_size": 2,
+    "academic_credits": "WUT?",
+    "lulz_had": "many",
+    "external_link": "YY",
+    "small_image": "X",
+    "techniques_used": [
+      "python"
+    ],
+    "project_name": "python data-module test script",
+    "course_id": "TDP003",
+    "end_date": "2009-09-06",
+    "project_id": 5,
+    "big_image": "XXX"
+  },
+  {
+    "start_date": "2009-09-05",
+    "short_description": "no",
+    "course_name": "OKÄNT",
+    "long_description": "no no no",
+    "group_size": 2,
+    "academic_credits": "WUT?",
+    "lulz_had": "many",
+    "external_link": "YY",
+    "small_image": "X",
+    "techniques_used": [
+      "python"
+    ],
+    "project_name": "python data-module test script",
+    "course_id": "TDP003",
+    "end_date": "2009-09-06",
+    "project_id": 6,
+    "big_image": "XXX"
+  },
+  {
+    "start_date": "2009-09-05",
+    "short_description": "no",
+    "course_name": "OKÄNT",
+    "long_description": "no no no",
+    "group_size": 2,
+    "academic_credits": "WUT?",
+    "lulz_had": "many",
+    "external_link": "YY",
+    "small_image": "X",
+    "techniques_used": [
+      "python"
+    ],
+    "project_name": "python data-module test script",
+    "course_id": "TDP003",
+    "end_date": "2009-09-06",
+    "project_id": 7,
+    "big_image": "XXX"
+  },
+  {
+    "start_date": "2009-09-05",
+    "short_description": "no",
+    "course_name": "OKÄNT",
+    "long_description": "no no no",
+    "group_size": 2,
+    "academic_credits": "WUT?",
+    "lulz_had": "many",
+    "external_link": "YY",
+    "small_image": "X",
+    "techniques_used": [
+      "python"
+    ],
+    "project_name": "python data-module test script",
+    "course_id": "TDP003",
+    "end_date": "2009-09-06",
+    "project_id": 8,
+    "big_image": "XXX"
   }
+
 ]
