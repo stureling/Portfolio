@@ -36,14 +36,13 @@ def list():
     """Creates a page where you can search the database for projects and sort them"""
     technique_data = data.get_techniques(db)
     search_fields = data.get_searchfields(db)
-    print(search_fields)
 
     if request.method == "POST":
         search = request.form["search"]
-        techniques = request.form.getlist("technique")
-        searched_fields = request.form.getlist("field")
+        techniques = request.form.getlist("techniques")
+        searched_fields = request.form.getlist("searched_fields")
         requested_projects = data.search(db, search=search,
-                                         search_fields=search_fields,
+                                         search_fields=searched_fields,
                                          techniques=techniques)
         return render_template("list_bootstrap.html",**locals())
     else:
