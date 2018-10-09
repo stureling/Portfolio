@@ -54,92 +54,95 @@
   </div>
 </nav>
 
-    <div class="container mw-100 image-div" style="height:400px">
+<div class="container mw-100 image-div" style="height:400px">
 
-      <div class="row h-25">
+  <div class="row h-25">
 	&nbsp
 	&nbsp;
-	</div>
-<div class="row h-50">
-  <div class="col-sm">
   </div>
-  
-  <div class="col-7 h-100 bg-trans text-center">
-    <form action="{{ url_for("list")}}" method="POST">
-    <div class="input-group">
-      <input type="text" class="form-control"
-	     aria-label="Search" name="search">
-      <div class="input-group-append">
-	<button class="btn btn-outline-light" type="submit"
-		id="search">Search</button>
-      </div>
-    </div>
-    <br>
-    <select class="selectpicker" multiple data-live-search="true"
-	    title="Techniques.." data-style="btn-outline-light text-light">
-      {% for technique in technique_data %}
-      <option data-tokens="technique"
-	      data-icon="devicon-{{technique}}-plain">{{technique}}</option>
-      {% endfor %}
-    </select>
-
-    <select class="selectpicker" multiple data-live-search="true"
-	    title="Search fields..." data-style="btn-outline-light text-light">
-      {{ search_fields }}
-      {% for field in search_fields %}
-      <option data-tokens="technique">{{field}}</option>
-      {% endfor %}
-    </select>
-
-  </div>
-  </form>
-
+  <div class="row h-50">
     <div class="col-sm">
     </div>
-</div>
+  
+    <div class="col-7 h-100 bg-trans text-center">
+      <form action="{{ url_for("list")}}" method="POST">
+	<div class="input-group">
+	  <input type="text" class="form-control"
+		 aria-label="Search" name="search">
+	  <div class="input-group-append">
+	    <button class="btn btn-outline-light" type="submit"
+		    id="search">Search</button>
+	  </div>
+	</div>
+	<br>
+	<select class="selectpicker trans" name="techniques"
+		multiple data-live-search="true"
+		title="Techniques.." data-style="btn-outline-light text-light">
+	  {% for technique in technique_data %}
+	  <option data-tokens="technique"
+		  data-icon="devicon-{{technique}}-plain">{{technique}}</option>
+	  {% endfor %}
+	</select>
 
-<div class="row h-25">
-  <div class="col-sm">
-  </div>
-  <div class="col-sm text-center">
-  </div>
-  <div class="col-sm">
+	<select class="selectpicker" name="searched_fields"
+		multiple data-live-search="true"
+		title="Search fields..." data-style="btn-outline-light text-light">
+	  {{ search_fields }}
+	  {% for field in search_fields %}
+	  <option data-tokens="technique">{{field}}</option>
+	  {% endfor %}
+	</select>
+      </form>
     </div>
+  
+    <div class="col-sm">
+    </div>
+  </div>
+  
+  <div class="row h-25">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm text-center">
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+  
 </div>
-</div>
-<div class="container mw-100 bg-dark">
+<div class="container mw-100 bg-dark" style="height:15px">
   <div class="row text-center p-4">
+    
     <div class="col-sm text-light">
-      <i class="devicon-python-plain" style="font-size:4rem"></i>
     </div>
     <div class="col-sm text-light">
-      <i class="devicon-cplusplus-plain" style="font-size:4rem"></i>
     </div>
     <div class="col-sm text-light">
-      <i class="devicon-html5-plain" style="font-size:4rem"></i>
     </div>
   </div>
 </div>
 
 <div class="container mw-100 bg-light">
   <div class="jumbotron text-dark text-center bg-transparent">
-    <div class="display-2">Search results</div>
+    <div class="display-4">SEARCH RESULTS</div>
+    <div class="row h-25">
+      &nbsp;
+    </div>
     <div class="row">
-
-    {%for i in projects %}
-        <div class="col-sm">
-            <div class="card text-center bg-white" style="width: 18em;">
-              <img class="card-img-top"
-		   src="{{url_for('static',
-			filename='images/projects/thumbnails/3_286x180.jpg')}}" alt="{{i['small_image']}}">
-                <div class="card-body">
-                    <h4 class="card-title">{{i['project_name']}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{i['end_date']}}</h6>
-                    <p class="card-text">{{i['short_description']}}</p>
-                    <a href="/project/{{i['project_id']}}" class="card-link">Read more</a>
-                </div>
-            </div>
-        </div>
+      
+    {%for project in requested_projects %}
+    <div class="col-sm">
+      <div class="card text-center bg-white h-100 bg-shadow" style="width: 18em;">
+        <img class="card-img-top"
+	     src="{{url_for('static',
+		  filename='images/projects/thumbnails/2_286x180.jpg')}}" alt="{{project['small_image']}}">
+        <div class="card-body">
+          <h4 class="card-title text">{{project['project_name']}}</h5>
+<p class="card-text text-muted">{{project['short_description']}}</p>
+<a href="/project/{{project['project_id']}}"><button type="button" class="btn btn-primary">Read more</button></a>
+</div>
+<div class="card-footer text-left"><small class="text-muted">Finished {{project['end_date']}}</small></div>
+</div>
+</div>
 {% endfor %}
 </div>
 </div>
