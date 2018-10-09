@@ -1,0 +1,21 @@
+.trans {
+    background-color: transparent;
+}
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-family: 'Advent Pro';
+}
+
+.image-div {
+    height:700px;
+    background:url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0px 0px 200px 0px rgba(0,0,0,1);
+}
+
+.4rem {
+    font-size:4rem;
+}
+

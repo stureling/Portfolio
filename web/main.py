@@ -5,6 +5,13 @@ app = Flask(__name__)
 
 db = data.load("data.json")
 
+@app.route("/bootstrap")
+def bootstrap():
+
+    projects = data.search(db, search="")
+
+    return render_template("index_bootstrap2.html", **locals())
+
 @app.route("/")
 def index():
     return render_template("index.html", database=db)
@@ -27,26 +34,20 @@ def techniques():
 @app.route("/list", methods=["POST", "GET"])
 def list():
     """Creates a page where you can search the database for projects and sort them"""
+    technique_data = data.get_techniques(db)
+    search_fields = data.get_searchfields(db)
+    print(search_fields)
+
     if request.method == "POST":
         search = request.form["search"]
         techniques = request.form.getlist("technique")
-        search_fields = request.form.getlist("field")
+        searched_fields = request.form.getlist("field")
         requested_projects = data.search(db, search=search,
                                          search_fields=search_fields,
                                          techniques=techniques)
-        return render_template("list.html",
-                               technique_data=data.get_techniques(db),
-                               search_fields=data.get_searchfields(db),
-                               techniques = techniques,
-                               search = search,
-                               requested_projects = requested_projects)
+        return render_template("list_bootstrap.html",**locals())
     else:
-        return render_template("list.html",
-                               technique_data=data.get_techniques(db),
-                               search_fields=data.get_searchfields(db),
-                               techniques = [],
-                               search = "",
-                               requested_projects = [])
+        return render_template("list_bootstrap.html", **locals())
 
 @app.route("/project/<project_id>")
 def project(project_id):
