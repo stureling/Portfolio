@@ -1,1 +1,22 @@
-Hej!
+{% extends "admin_template.html" %}
+
+{% block body %}
+<div class="h-100 container">
+  <div class="h-75 row align-items-center">
+    <div class="col-6 light-green p-5 bg-shadow-dark rounded mx-auto">
+   
+      <div class="row justify-content-md-center">
+	<i class="far fa-grin-beam-sweat fa-5x white-icon"></i>
+      </div>
+      
+      <br>
+      <hr>
+      <br>
+	  {% include "message_flashing.html" %}
+	</div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

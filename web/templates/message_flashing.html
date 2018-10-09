@@ -1,0 +1,8 @@
+<!-- Handles message flashing when logging in -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} p-1" role="alert">{{message}}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
