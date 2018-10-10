@@ -124,7 +124,7 @@ def login():
             flash("Invalid login, please try again.", "danger")
         elif authorized:
             flash("Login succesful.", "success")
-            return redirect(url_for("add"))
+            return redirect(url_for("edit"))
 
     return render_template("login.html")
 

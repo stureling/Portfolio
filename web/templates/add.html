@@ -3,9 +3,10 @@
 {% block body %}
 <div class="h-100 container mw-100">
   <div class="h-75 row align-items-center">
-    <table class="table  table-striped table-dark
+    <div class="col p-5 m-5 light-green bg-shadow-dark rounded">
+    <table class="table  table-light
 		  table-hover">
-      <thead class="thead-dark">
+      <thead class="thead-light">
 	<tr>
 	  {% for field in table_fields %}
 	  <th scope="col">{{field}}</th>
@@ -35,6 +36,7 @@
 	{% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 {% endblock %}
