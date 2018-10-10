@@ -15,10 +15,10 @@ db = data.load("data.json")
 class User(UserMixin):
     def __init__(self, user_id):
         self.id = user_id
-        
+
 # Database file of all the users and their passwords
 users = data.load_users("users.json")
-    
+
 # Start Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -36,7 +36,9 @@ def bootstrap():
 
 @app.route("/")
 def index():
-    return render_template("index.html", database=db)
+    latest_projects = data.search(db, sort_by='end_date')
+    return render_template("index.html", database=db,
+                           latest_projects=latest_projects)
 
 @app.route("/techniques")
 def techniques():
@@ -68,9 +70,10 @@ def list():
         requested_projects = data.search(db, search=search,
                                          search_fields=searched_fields,
                                          techniques=techniques)
-        return render_template("list_bootstrap.html",**locals())
+        return render_template("list_bootstrap_template.html",**locals())
     else:
-        return render_template("list_bootstrap.html", **locals())
+        requested_projects = data.search(db)
+        return render_template("list_bootstrap_template.html", **locals())
 
 @app.route("/project/<project_id>")
 def project(project_id):
@@ -122,7 +125,7 @@ def login():
         elif authorized:
             flash("Login succesful.", "success")
             return redirect(url_for("add"))
-        
+
     return render_template("login.html")
 
 @app.route("/logout")
@@ -130,7 +133,7 @@ def login():
 def logout():
     logout_user()
     return "Logged ya out, brosef."
-    
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("page_not_found.html"), 404
