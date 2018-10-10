@@ -1,13 +1,43 @@
+{% extends "admin_template.html" %}
 
-
-<form action="{{ url_for("login")}}" method="POST">
-  <div class="row">
-    <div class="col">
-      <input type="text" name="username" class="form-control" placeholder="First name">
-    </div>
-    <div class="col">
-      <input type="text" name="password" class="form-control" placeholder="Last name">
+{% block body %}
+<div class="h-100 container">
+  <div class="h-75 row align-items-center">
+    <div class="col-6 light-green p-5 bg-shadow-dark rounded mx-auto">
+   
+      <div class="row justify-content-md-center">
+	<i class="far fa-grin-beam-sweat fa-5x white-icon"></i>
+      </div>
+      
+      <br>
+      <hr>
+      <br>
+      
+      <form action="{{ url_for("login")}}" method="POST">
+	  <input type="text" name="username" class="form-control" placeholder="Username">
+	<br>
+	<input type="password" name="password" class="form-control" placeholder="Password">
+	<br>
+	<div class="text-center">
+	  <button type="submit" class="btn btn-dark pl-4 pr-4">Login</button>
+	  <br>
+	  <br>
+	  <!-- Handles message flashing when logging in -->
+	  {% with messages = get_flashed_messages(with_categories=true) %}
+	  {% if messages %}
+	  {% for category, message in messages %}
+	  {% if category == "error" %}
+	  <div class="alert alert-danger p-1" role="alert">{{message}}</div>
+	  {% elif category == "success" %}
+	  <div class="alert alert-success p-1" role="alert">{{message}}</div>
+	  {% endif %}
+	  {% endfor %}
+	  {% endif %}
+	  {% endwith %}
+	</div>
+      </form>
+      
     </div>
   </div>
-  <button type="Submit">Submit</button>
-</form>
+</div>
+{% endblock %}
