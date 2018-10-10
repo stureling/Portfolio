@@ -1,0 +1,86 @@
+{% extends "main_template.html" %}
+{% block head %}
+        <title>Search</title>{% endblock %}
+{% block header %}
+            <div class="row h-50">
+                <div class="col-sm">
+                </div>
+                <div class="col-7 h-100 bg-trans text-center">
+                    <form action="{{ url_for("list")}}" method="POST">
+	                    <div class="input-group">
+	                        <input type="text" class="form-control" aria-label="Search" name="search">
+                            <div class="input-group-append">
+	                            <button class="btn btn-outline-light" type="submit" id="search">Search
+                                </button>
+                            </div>
+                        </div>
+	                    <br>
+	                    <select class="selectpicker trans" name="techniques" multiple data-live-search="true" title="Techniques.." data-style="btn-outline-light text-light">
+                            {% for technique in technique_data %}
+                            <option data-tokens="technique" data-icon="devicon-{{technique}}-plain">{{technique}}
+                            </option>{% endfor %}
+                        </select>
+                        <select class="selectpicker" name="searched_fields" multiple data-live-search="true" title="Search fields..." data-style="btn-outline-light text-light">
+
+	                        {{ search_fields }}
+	                        {% for field in search_fields %}
+                            <option data-tokens="technique">{{field}}
+                            </option>
+	                        {% endfor %}
+                        </select>
+                    </form>
+                </div>
+                <div class="col-sm">
+                </div>
+            </div>
+            <div class="row h-25">
+                <div class="col-sm">
+                </div>
+                <div class="col-sm text-center">
+                </div>
+                <div class="col-sm">
+                </div>
+            </div>
+{% endblock %}
+{% block body %}
+        <div class="container mw-100 bg-light">
+            <div class="jumbotron text-dark text-center bg-transparent">
+                <div class="display-4">SEARCH RESULTS
+                </div>
+                <div class="row h-25">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    {%for project in requested_projects %}
+                    <div class="col-sm">
+                        <div class="card text-left bg-white h-100 bg-shadow" style="width: 18em;">
+                            <img class="card-img-top" src="{{url_for('static', 
+                            filename='images/projects/thumbnails/1_286x180.jpg')}}" 
+                            alt="{{project['small_image']}}">
+                            
+                            <div class="card-body">
+                                <div class="row">
+                                    <p class="text-warning font-weight-bold">{{project['techniques_used'][0]}}
+                                    </p>
+                                </div>
+                                <h4 class="card-title font-weight-bold">{{project['project_name']}}
+                                </h4>
+                                <p class="card-text text-muted">{{project['short_description']}}
+                                </p>
+                                <a href="/project/{{project['project_id']}}">
+                                    <button type="button" class="btn btn-primary">Read more
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="card-footer text-left">
+                                <small class="text-muted">Finished {{project['end_date']}}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+{% endblock %}
+

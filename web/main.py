@@ -78,9 +78,9 @@ def login():
                 and request.form["password"] == user["password"]):
                 session["logged_in"] = request.form["username"]
                 break
-        
+
     return render_template("login.html", error=error)
-    
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("page_not_found.html"), 404
