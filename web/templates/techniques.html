@@ -1,29 +1,25 @@
 {% extends "main_template.html" %}
-{% block header %}
-<title> Techniques</title>
-{% endblock %}
-
+{% block title %}Techniques{% endblock %}
 {% block body %}
-{% for e in master_list %}
-<div class="container">
-    <h3> {{e[0]|capitalize}} </h3>
-    <div class="row justify-content-start">
-    {%for i in e[1] %}
-        <div class="col-auto">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{url_for('static', filename='images/test.jpg')}}" alt="{{i['small_image']}}">
-                <div class="card-body">
-                    <h4 class="card-title">{{i['project_name']}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{i['end_date']}}</h6>
-                    <p class="card-text">{{i['short_description']}}</p>
-                    <a href="/project/{{i['project_id']}}" class="card-link">Read more</a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+    {% include "navbar.html" %}
+    {% block navbar %}
+    {% endblock %}
+    {% include "div_image.html" %}
+    {% block div_image  %}
+    {% endblock %}
     </div>
-</div>
-{% endfor %}
-</div>
-<br>
+    <div class="container mw-100 bg-dark" style="height: 15px;">
+    </div>
+    {% for e in master_list %}
+    <div class="container">
+        <h3> {{e[0]|capitalize}} </h3>
+        <div class="row justify-content-start">
+            {%for project in e[1] %}
+            {% include "card.html" %}
+            {% block card %}
+            {% endblock %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}
