@@ -1,0 +1,9 @@
+{% macro input(name) -%}
+   <span>{{ form[name].label }}</span>
+   {{form[name](class=class_kw)}}
+   {% if form[name].errors %}
+   {% for error in form[name].errors %}
+   <div class="alert alert-danger p-0 m-2">{{ error }}</div>
+   {% endfor %}
+   {% endif %}
+   {%-  endmacro %}

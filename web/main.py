@@ -97,19 +97,26 @@ def edit():
 @app.route("/modify/<project_id>", methods=["GET", "POST"])
 @login_required
 def modify(project_id):
-    global db    
-    # Get our project
-    project = data.search(db, search=project_id,
-                          search_fields=["project_id"])
-    p_index = db.index(project[0])
+    global db
+
+    if project_id == "add":
+        return "This is where we add stuff."
+    elif  (project_id.isdigit() and
+           int(project_id) in  [x["project_id"] for x in db]):
+        # Get current project and its index
+        project = data.search(db, search=project_id,
+                              search_fields=["project_id"])
+        p_index = db.index(project[0])
+    else:
+        abort(404)
     
     # Instantiated WTForm of ModifyForm type
-    form = forms.ModifyForm(request.form, data=project[0])
-    print(form.data)
+    form = forms.ModifyForm(request.form, data=project[0], database=db)
+    class_kw = forms.class_kw
     
     if request.method == "POST" and form.validate():
-        flash("Project modified successfully.")
-       # data.save(db, "data.json")
+        flash("Project modified successfully.", "success")
+        # data.save(db, "data.json")
         
 
     return render_template("modify.html", **locals())

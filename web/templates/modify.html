@@ -1,129 +1,80 @@
 {% extends "admin_template.html" %}
+{% import "form.html" as forms with context %}
 
 {% block body %}
 <div class="h-100 container">
   <div class="h-75 row align-items-sm-center text-light">
-    <div class="col-md-7 m-2 p-3 bg-trans bg-shadow-dark rounded">
+    <div class=" col-md-7 m-2 p-3 bg-trans bg-shadow-dark rounded">
       {% include "message_flashing.html" %}
       <!-- Form for input -->
       <form action="{{url_for('modify', 
 		    project_id=project_id)}}" method="POST">
-	<div class="form-row align-items-center">
+	<div class="form-row align-items-top">
 	  <div class="col-8">
-	   <span>{{form.project_name.label}}</span>
-	    {{form.project_name(class="form-control text-light
-	   bg-dark")}}
+	    {{ forms.input("project_name") }}
 	  </div>
 	  
-	  <div class="col-2">
-	    <span>{{form.project_id.label}}</span>
-	    {{form.project_id(class="form-control text-light bg-dark")}}
+	  <div class="col">
+	    {{ forms.input("project_id") }}
 	  </div>
-	  
 	</div>
-	<span>Long Description</span>
-	<div class="input-group mb-3">
-	  <textarea  class="form-control
-			    text-light
-			    bg-dark" name="long_description"
-		     aria-label="Description..">{{project[0]['long_description']}}</textarea>
+	<div class="col-100">
+	  {{ forms.input("long_description") }}
+	</div>
+
+	
+	<div class="form-row align-items-top">
+	  <div class="col">
+	    {{ forms.input("short_description") }}
+	  </div>
 	</div>
 	
-	<span>Short Description</span>
-	<div class="input-group mb-3">
-	  <textarea class="form-control text-light bg-dark"
-		    name="short_description"
-		    aria-label="Short Description..">{{project[0]['short_description']}}</textarea>
-	</div>
-	
-	<div class="form-row align-items-center">
+	<div class="form-row align-items-top">
 	  <div class="col-7">
-	    <span>External Link</span>
-	    <input type="text" name="external_link" class="form-control
-							   bg-dark
-							   text-light"
-		   placeholder="External Link"
-		   aria-label="External Link"
-		   value="{{project[0]["external_link"]}}">
+	    {{ forms.input("external_link") }}
 	  </div>
 	  <div class="col-4 align-text-center">
 	    <button type="submit" class="btn btn-primary">Submit</button>
 	  </div>
 	</div>
-	
     </div>
+
     
-    <div class="h-75 col-md-4 m-2 p-3 bg-semi bg-shadow-dark rounded">
-      <div class="form-row align-items-center">
-	<div class="col-5 ">
-	    <span>{{form.start_date.label}}</span>
-	    {{form.start_date(class="form-control text-light bg-dark")}}
+    <div class=" col-md-4 m-2 p-3 bg-semi bg-shadow-dark rounded">
+      <div class="form-row align-items-top">
+	<div class="col-5">
+	  {{ forms.input("start_date") }}
+	    
 	</div>
 	<div class="col-5">
-	  <span>End Date</span>
-	  <input type="text" name="end_date" class="form-control 
-						    bg-dark
-						    text-light mb-2"
-		 placeholder="End Date" aria-label="Start Date"
-		 value="{{project[0]['end_date']}}">
+	  {{ forms.input("end_date") }}
 	</div>
       </div>
-
       
-      <div class="form-row align-items-center">
-	<div class="col-2">
-	  <span>Group Size</span>
-	  <input type="text" name="group_size" class="form-control
-						      bg-dark
-						      text-light mb-2"
-		 placeholder="Group Size" aria-label="Group Size"
-		 value="{{project[0]['group_size']}}">	
+      <div class="form-row align-items-top">
+	<div class="col-5">
+	  {{ forms.input("group_size") }}
 	</div>
-	<div class="col-3">
-	  <span>Academic Credits</span>
-	  <input type="text" name="academic_credits"
-		 class="form-control mb-2
-			bg-dark
-			text-light"
-		 placeholder="Academic Credits"
-		 aria-label="Academic Credits"
-		 value="{{project[0]['academic_credits']}}">
+	<div class="col">
+	    {{ forms.input("academic_credits") }}
 	</div>	
       </div>
-
       
-      <div class="form-row align-items-center">
-	<div class="col-4">
-	  <span>Course Name</span>
-	  <input type="text" name="course_name" class="form-control
-						       bg-dark
-						       text-light mb-2"
-		 placeholder="Course Name" aria-label="Course Name"
-		 value="{{project[0]['course_name']}}">
+      <div class="form-row align-items-top">
+	<div class="col-6">
+	  {{ forms.input("course_name") }}
 	</div>
-
-	<div class="col-3">
-	  <span>Course ID</span>
-	  <input type="text" name="course_id" class="form-control
-						     bg-dark
-						     text-light mb-2"
-		 placeholder="Course ID" aria-label="Course ID"
-		 value="{{project[0]['course_id']}}">
-	</div>
-      </div>
-
-      <div class="form-row align-items-center">
 	<div class="col">
-	  <span>Techniques Used</span>
-	  <input type="text" name="techniques_used"
-		 class="form-control mb-2 bg-dark
-			text-light"
-		 placeholder="Techniques Used"
-		 aria-label="Techniques Used"
-		 value="{{project[0]['techniques_used']}}">
+	  {{ forms.input("course_id") }}
 	</div>
       </div>
-
+      
+      <div class="form-row align-items-top">
+	<div class="col">
+	    {{ forms.input("techniques_used") }}
+	</div>
+      </div>
+      
       <div class="form-row">
 	<span>Image file</span>
 	<div class="custom-file">
@@ -135,6 +86,6 @@
 	    Example invalid custom file feedback</div>
 	</div>
     </form>
-  </div>
-</div>
-{% endblock %}
+    </div>
+    </div>
+    {% endblock %}
