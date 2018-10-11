@@ -81,7 +81,7 @@ def project(project_id):
         return render_template("project.html",
                            project=data.get_project(db,
                                             int(project_id)))
-    
+
 @app.route("/edit")
 @login_required
 def edit():
