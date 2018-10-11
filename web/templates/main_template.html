@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" {% block html_conf %}{% endblock %}>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
         {% block header %}
         {% endblock %}
     </head>
-    <body>
+    <body {% block body_conf %} {% endblock %}>
         {% block body %}
         {% endblock %}
         <!-- jQuery (necessary fr Bootstrap's JavaScript plugins) -->

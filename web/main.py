@@ -70,10 +70,10 @@ def list():
         requested_projects = data.search(db, search=search,
                                          search_fields=searched_fields,
                                          techniques=techniques)
-        return render_template("list_bootstrap_template.html",**locals())
+        return render_template("list.html",**locals())
     else:
         requested_projects = data.search(db)
-        return render_template("list_bootstrap_template.html", **locals())
+        return render_template("list.html", **locals())
 
 @app.route("/project/<project_id>")
 def project(project_id):
