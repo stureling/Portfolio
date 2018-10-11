@@ -46,3 +46,11 @@ body {
 .full-body {
     height: 100%;
 }
+
+.bg-semi {
+    background-color:rgba(150,150,150, 0.1);
+}
+
+.form-control {
+    border:0;
+}
