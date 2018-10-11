@@ -4,6 +4,7 @@ import data
 import os
 from flask_login import LoginManager, login_user, login_required, UserMixin
 from flask_login import logout_user
+import forms
 
 # Start Flask
 app = Flask(__name__)
@@ -93,15 +94,31 @@ def edit():
                     "course_id"]
     return render_template("add.html", **locals())
 
-@app.route("/modify/<project_id>")
+@app.route("/modify/<project_id>", methods=["GET", "POST"])
 @login_required
 def modify(project_id):
     global db
-    all_projects = data.search(db, search="")
-    table_fields = ["project_id",
-                    "project_name",
-                      "short_description",
-                    "course_id"]
+
+    if project_id == "add":
+        return "This is where we add stuff."
+    elif  (project_id.isdigit() and
+           int(project_id) in  [x["project_id"] for x in db]):
+        # Get current project and its index
+        project = data.search(db, search=project_id,
+                              search_fields=["project_id"])
+        p_index = db.index(project[0])
+    else:
+        abort(404)
+    
+    # Instantiated WTForm of ModifyForm type
+    form = forms.ModifyForm(request.form, data=project[0], database=db)
+    class_kw = forms.class_kw
+    
+    if request.method == "POST" and form.validate():
+        flash("Project modified successfully.", "success")
+        # data.save(db, "data.json")
+        
+
     return render_template("modify.html", **locals())
 
 @app.route("/login", methods=["GET", "POST"])

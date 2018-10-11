@@ -14,6 +14,17 @@ def load(filename):
         return None
     return db
 
+def save(database, filename):
+    """ Save current database to JSON file."""
+    try:
+        new_json = json.dumps(database, indent=4)
+        print(new_json)
+        with open(filename, "w") as f:
+            for line in new_json:
+                f.write(line)
+    except:
+        return None
+
 def load_users(filename):
     """ Loads JSON formatted user data from a file"""
     try:
