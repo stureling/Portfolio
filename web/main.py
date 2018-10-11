@@ -7,7 +7,7 @@ from flask_login import logout_user
 
 # Start Flask
 app = Flask(__name__)
-app.secret_key = os.urandom(64)
+app.secret_key = "\xe1TL\\xc4?~\\xc4\\x91\\xa49E|m3qrQ\\xb7\'F\\x18<\\xa5\\xe1kJ\\xb8\\x89\\xa9\\xa8>\\xc7&\\x16\\xb6\\xe0\\x86\\xa7m\\xc4]Mg\\xdf\\xe0\\x8c\\xa3Ts\\xaa]\\xc1\\xf1Q,\\x9c\\xa5\\xe7-\\xd9\\xda\\xb2\\xf1\\xf3"
 db = data.load("data.json")
 
 
@@ -81,12 +81,28 @@ def project(project_id):
         return render_template("project.html",
                            project=data.get_project(db,
                                             int(project_id)))
-
-@app.route("/add")
+    
+@app.route("/edit")
 @login_required
-def add():
+def edit():
     global db
+    all_projects = data.search(db, search="")
+    table_fields = ["project_id",
+                    "project_name",
+                      "short_description",
+                    "course_id"]
     return render_template("add.html", **locals())
+
+@app.route("/modify/<project_id>")
+@login_required
+def modify(project_id):
+    global db
+    all_projects = data.search(db, search="")
+    table_fields = ["project_id",
+                    "project_name",
+                      "short_description",
+                    "course_id"]
+    return render_template("modify.html", **locals())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -105,10 +121,10 @@ def login():
                 break
 
         if not authorized:
-            flash("Invalid login, please try again.", "error")
+            flash("Invalid login, please try again.", "danger")
         elif authorized:
             flash("Login succesful.", "success")
-            return redirect(url_for("add"))
+            return redirect(url_for("edit"))
 
     return render_template("login.html")
 

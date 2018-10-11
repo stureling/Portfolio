@@ -1,21 +1,41 @@
 {% extends "admin_template.html" %}
 
 {% block body %}
-<div class="h-100 container">
+<div class="h-100 container mw-100">
   <div class="h-75 row align-items-center">
-    <div class="col-6 light-green p-5 bg-shadow-dark rounded mx-auto">
-   
-      <div class="row justify-content-md-center">
-	<i class="far fa-grin-beam-sweat fa-5x white-icon"></i>
-      </div>
-      
-      <br>
-      <hr>
-      <br>
-	  {% include "message_flashing.html" %}
-	</div>
-      </form>
-      
+    <div class="col p-5 m-5 light-green bg-shadow-dark rounded">
+    <table class="table  table-light
+		  table-hover">
+      <thead class="thead-light">
+	<tr>
+	  {% for field in table_fields %}
+	  <th scope="col">{{field}}</th>
+	  {% endfor %}
+	</tr>
+      </thead>
+      <tbody>
+	<tr>
+	<!-- For new projects -->
+	<th scope="row"><a href="{{url_for('modify', 
+		   project_id='add')}}" class="small">
+	    Add new project...</th>
+	{% for field in table_fields[:-1] %}
+	<th scope="row"></th>
+	{% endfor %}
+	</tr>
+	<tr>
+	{% for project in all_projects %}
+	{% for field in table_fields %}
+	<th scope="row">{{project[field]}}
+	  {% if field == "project_id"%}
+	  <a href="{{url_for('modify', 
+		   project_id=project['project_id'])}}" class="small">
+	    <i class="far fa-edit fa-xs"></i></a>{% endif%}</th>
+	{% endfor %}
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
     </div>
   </div>
 </div>

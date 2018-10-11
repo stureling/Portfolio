@@ -12,7 +12,9 @@
       <br>
       <hr>
       <br>
-      
+      {% if current_user.is_authenticated %}
+      <div class="alert alert-info">You're already logged in!</div>
+      {% else %}
       <form action="{{ url_for("login")}}" method="POST">
 	  <input type="text" name="username" class="form-control" placeholder="Username">
 	<br>
@@ -22,20 +24,10 @@
 	  <button type="submit" class="btn btn-dark pl-4 pr-4">Login</button>
 	  <br>
 	  <br>
-	  <!-- Handles message flashing when logging in -->
-	  {% with messages = get_flashed_messages(with_categories=true) %}
-	  {% if messages %}
-	  {% for category, message in messages %}
-	  {% if category == "error" %}
-	  <div class="alert alert-danger p-1" role="alert">{{message}}</div>
-	  {% elif category == "success" %}
-	  <div class="alert alert-success p-1" role="alert">{{message}}</div>
-	  {% endif %}
-	  {% endfor %}
-	  {% endif %}
-	  {% endwith %}
+	  {% include "message_flashing.html" %}
 	</div>
       </form>
+      {% endif %}
       
     </div>
   </div>
