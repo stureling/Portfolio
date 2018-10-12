@@ -100,23 +100,45 @@ def modify(project_id):
     global db
 
     if project_id == "add":
-        return "This is where we add stuff."
+        form = forms.ModifyFormAdd(request.form, database=db)
+        # Add new project.
+        if request.method == "POST" and form.validate():
+            flash("Project modified successfully.", "success")
+            db.append({})
+            for k,v in form.data.items():
+                if k == "techniques_used":
+                    v = v.split(",")
+                db[-1][k] = v
+                    
+            data.save(db, "data.json")
+                
+        
     elif  (project_id.isdigit() and
            int(project_id) in  [x["project_id"] for x in db]):
         # Get current project and its index
         project = data.search(db, search=project_id,
                               search_fields=["project_id"])
         p_index = db.index(project[0])
+        form = forms.ModifyForm(request.form,
+                               data=project[0], database=db)
+        # Modify the project.
+        if request.method == "POST" and form.validate():
+            flash("Project modified successfully.", "success")
+            for k,v in form.data.items():
+                if project[0][k] != v:
+                    if k == "techniques_used":
+                        v = v.split(",")
+                project[0][k] = v
+                    
+            data.save(db, "data.json")
+        
     else:
         abort(404)
     
     # Instantiated WTForm of ModifyForm type
-    form = forms.ModifyForm(request.form, data=project[0], database=db)
     class_kw = forms.class_kw
     
-    if request.method == "POST" and form.validate():
-        flash("Project modified successfully.", "success")
-        # data.save(db, "data.json")
+
         
 
     return render_template("modify.html", **locals())

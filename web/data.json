@@ -6,8 +6,12 @@
         "long_description": "no no noasdsadasdvxc",
         "group_size": 2,
         "academic_credits": "WUT?",
-        "external_link": "YY",
-        "techniques_used": "['python']",
+        "external_link": "",
+        "techniques_used": [
+            "lol",
+            "boll",
+            "koll"
+        ],
         "project_name": "python data-module test script",
         "course_id": "TDP003",
         "end_date": "2009-09-06",

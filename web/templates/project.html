@@ -8,7 +8,7 @@
     {% endblock %}
     <div class="container-fluid image-div" style="height:90%">
         <div class="row h-100 align-items-center">
-            <div class="col-md ml-5">
+            <div class="col-xl ml-5">
                 <div id="carouselExampleControls" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -29,15 +29,15 @@
                     </a>
                 </div>
             </div> 
-            <div class="col-md mr-5">
+            <div class="col-xl mr-5 h-75">
                 <div class="w-75 text-white p-3 text-center rounded bg-dark">
                     <h1 class="display-5 ">{{project['project_name']}}</h1>
                     <h5 class="display-5">{{project['techniques_used'][0]|capitalize}}{% for technique in project['techniques_used'][1:]%}, {{technique|capitalize}}{% endfor %}</h5>
                     <div class="row">
-                        <div class="col-md m-1">
+                        <div class="col-lg m-1">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt mauris quis elit faucibus condimentum. Etiam iaculis porttitor fermentum. Integer mi eros, vehicula tincidunt sollicitudin et, condimentum et nulla. Cras vestibulum nunc aliquam, ornare turpis vel, euismod urna.{{project['long_description']}}</p>
                         </div>
-                        <div class="col-md-auto m-1">
+                        <div class="col-lg-auto m-1">
                             <ul class="text-left" style="list-style-type:none">
                                 <li>Project started: {{project['start_date']}}</li>
                                 <li>Project finished: {{project['end_date']}}</li>
