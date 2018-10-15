@@ -118,7 +118,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-06",
         "project_id": 7,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-05",
