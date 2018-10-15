@@ -45,6 +45,7 @@ def index():
 def techniques():
     """Creates and sorts a list of all project by the technique used.
     Then it displays a page of all projects"""
+    
     master_list = []
     technique_list = data.get_techniques(db)
     for e in technique_list:
@@ -68,9 +69,18 @@ def list():
         search = request.form["search"]
         techniques = request.form.getlist("techniques")
         searched_fields = request.form.getlist("searched_fields")
-        requested_projects = data.search(db, search=search,
+        if request.form["sort"]:
+            sort = request.form["sort"]
+        else:
+            sort = "start_date"
+        order = request.form["order"]
+        requested_projects = data.search(db,
+                                         search=search,
                                          search_fields=searched_fields,
-                                         techniques=techniques)
+                                         techniques=techniques,
+                                         sort_by=sort,
+                                         sort_order=order)
+        print(requested_projects)
         return render_template("list.html",**locals())
     else:
         requested_projects = data.search(db)

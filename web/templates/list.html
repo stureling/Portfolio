@@ -63,6 +63,23 @@
 	                    <option data-tokens="technique">{{field}}</option>
 	                    {% endfor %}
 	                </select>
+			
+			<select class="selectpicker" name="sort"
+				 data-live-search="true"
+				title="Sort by..." data-style="btn-outline-light text-light">
+	                  {{ search_fields }}
+	                  {% for field in search_fields %}
+	                  <option data-tokens="fields">{{field}}</option>
+	                  {% endfor %}
+	                </select>
+			
+			<select class="selectpicker" name="order"
+				 data-live-search="true"
+				title="Sort by..." data-style="btn-outline-light text-light">
+	                  <option data-tokens="sort">asc</option>
+			  <option data-tokens="sort">desc</option>
+	                </select>
+			
                 </form>
             </div>
             <div class="col-sm">
