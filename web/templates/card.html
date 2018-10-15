@@ -1,13 +1,17 @@
         {% block cards %}
-        <div class="col-sm">
-            <div class="card text-left bg-white h-100 bg-shadow" style="width: 18em;">
+        <div class="col-sm m-2">
+            <div class="card mx-auto text-left bg-white h-100 bg-shadow" style="width: 18em;">
                 <img class="card-img-top"
 	            src="{{url_for('static', filename='images/projects/thumbnails/1_286x180.jpg')}}"  
                 alt="{{project['small_image']}}">
                 <div class="card-body">
 	                <div class="row">
 	                    <p class="text-warning font-weight-bold">
-	                    {{project['techniques_used'][0]}}</p>
+                        {{project['techniques_used'][0]|capitalize}}
+                        {% for technique in project['techniques_used'][1:] %}
+	                    , {{technique|capitalize}} 
+                        {% endfor %}
+                        </p>
 	                </div>
                     <h4 class="card-title font-weight-bold">{{project['project_name']}}</h4>
                     <p class="card-text text-muted">{{project['short_description']}}</p>
