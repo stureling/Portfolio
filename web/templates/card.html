@@ -1,21 +1,37 @@
-        {% block cards %}
-        <div class="col-sm">
-            <div class="card text-left bg-white h-100 bg-shadow" style="width: 18em;">
-                <img class="card-img-top"
-	            src="{{url_for('static', filename='images/projects/thumbnails/1_286x180.jpg')}}"  
-                alt="{{project['small_image']}}">
-                <div class="card-body">
-	                <div class="row">
-	                    <p class="text-warning font-weight-bold">
-	                    {{project['techniques_used'][0]}}</p>
-	                </div>
-                    <h4 class="card-title font-weight-bold">{{project['project_name']}}</h4>
-                    <p class="card-text text-muted">{{project['short_description']}}</p>
-                    <a href="/project/{{project['project_id']}}"><button type="button" 
-                    class="btn btn-primary">Read more</button></a>
-                </div>
-                <div class="card-footer text-left"><small class="text-muted">
-                Finished {{project['end_date']}}</small></div>
-            </div>
-        </div>
-        {% endblock %}
+{% block cards %}
+<div class="col-sm mb-5">
+  <div class="card text-left bg-white h-100 bg-shadow" style="width:25em;">
+    <img class="card-img-top"
+	 src="{{url_for('static', filename='images/projects/thumbnails/1_286x180.jpg')}}"  
+         alt="{{project['small_image']}}">
+    <div class="card-body m-2">
+      <div class="row">
+	<p class="text-warning font-weight-bold">
+	  {{project['techniques_used'][0]}}</p>
+      </div>
+      <div class="row  truncate">
+	<h5 class="card-title font-weight-bold">{{project['project_name']}}</h5>
+      </div>
+      <div class="row h-25">
+	<p class="card-text text-muted">{{project['short_description']}}</p>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+    <div class="card-footer text-left">
+      <div class="row">
+	<div class="col">
+	<small class="text-muted">
+          Finished {{project['end_date']}}</small>
+	</div>
+	<div class="col">
+    	<a href="/project/{{project['project_id']}}">
+	  <button type="button" 
+		  class="btn btn-outline-primary">Read more</button></a>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

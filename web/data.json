@@ -1,16 +1,15 @@
 [
     {
         "start_date": "2018-09-05",
-        "short_description": "noxcvcx",
+        "short_description": "no no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxc",
         "course_name": "OK\u00c4NT",
-        "long_description": "no no noasdsadasdvxc",
+        "long_description": "no no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxc",
         "group_size": 2,
         "academic_credits": "WUT?",
         "external_link": "",
         "techniques_used": [
             "lol",
-            "boll",
-            "koll"
+            ""
         ],
         "project_name": "python data-module test script",
         "course_id": "TDP003",
@@ -137,5 +136,23 @@
         "end_date": "2009-09-06",
         "project_id": 8,
         "big_image": "XXX"
+    },
+    {
+        "start_date": "",
+        "end_date": "",
+        "course_name": "",
+        "long_description": "",
+        "short_description": "",
+        "group_size": 2,
+        "academic_credits": "",
+        "external_link": "",
+        "techniques_used": [
+            "asd",
+            ""
+        ],
+        "project_name": "Nah",
+        "course_id": "",
+        "big_image": "",
+        "project_id": 11
     }
 ]
