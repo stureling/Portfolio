@@ -36,9 +36,18 @@
                     {% endfor %}
                     </div>
                 </div>
+                {% if current_user.is_authenticated %}
+	            <div class="navbar-text ml-auto text-white">
+	                <a href="{{url_for('edit')}}"><i class="fas fa-sign-in-alt"></i> Edit</a>
+	            </div>
+	            <div class="navbar-text ml-3 text-white">
+	                <a href="{{url_for('logout')}}"><i class="fas fa-sign-in-alt"></i> Logout</a>
+	            </div>
+                {% else %}
 	            <div class="navbar-text ml-auto text-white">
 	                <a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a>
 	            </div>
+                {% endif %}
             </div>
         </nav>
     {% include "div_image.html" %}

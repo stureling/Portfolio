@@ -15,7 +15,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-06",
         "project_id": 1,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-08",
@@ -33,7 +33,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-09",
         "project_id": 2,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-07",
@@ -52,7 +52,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-08",
         "project_id": 3,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-06",
@@ -67,7 +67,7 @@
         "course_id": " \"",
         "end_date": "2009-09-07",
         "project_id": 4,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-05",
@@ -84,7 +84,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-06",
         "project_id": 5,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-05",
@@ -101,7 +101,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-06",
         "project_id": 6,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "2009-09-05",
@@ -135,7 +135,7 @@
         "course_id": "TDP003",
         "end_date": "2009-09-06",
         "project_id": 8,
-        "big_image": "XXX"
+        "big_image": ["1.jpg", "2.jpg", "3.jpg"]
     },
     {
         "start_date": "",
