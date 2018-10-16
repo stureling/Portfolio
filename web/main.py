@@ -12,9 +12,29 @@ app.secret_key = "\xe1TL\\xc4?~\\xc4\\x91\\xa49E|m3qrQ\\xb7\'F\\x18<\\xa5\\xe1kJ
 db = data.load("data.json")
 
 
-# User class for Flask-Login
 class User(UserMixin):
+    """Flask login user
+
+    This is a basic user template for flask_login that inherits 
+    from flask_login's UserMixin class. 
+
+    Attributes
+    ----------
+    id : int
+       An integer representing the user's id.
+
+    """
     def __init__(self, user_id):
+        """ __init method___
+
+        Starts the user off with an id.
+
+        Parameters
+        ----------
+        user_id : int
+           An integer representing the user's id.
+
+        """
         self.id = user_id
 
 # Database file of all the users and their passwords
@@ -26,25 +46,51 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
+    """ Callback for login_user
+
+    This is a callback function for flask login.
+    It's called every time we try to log in a user with
+    flask_login.login_user.
+
+    Parameters
+    ----------
+    user_id: int
+       User representation.
+    """
     return User(user_id)
 
 
 # Start Flask routes
-@app.route("/bootstrap")
-def bootstrap():
-    projects = data.search(db, search="")
-    return render_template("index_bootstrap2.html", **locals())
-
 @app.route("/")
 def index():
+    """ Index view
+    
+    Returns a view for the index page. Fetches
+    all the projects in the database and passes them
+    on to render_template function together with the index.html
+    template page.
+
+    Returns
+    -------
+    render_template
+
+    """
     latest_projects = data.search(db, sort_by='end_date')
     return render_template("index.html", database=db,
                            latest_projects=latest_projects)
 
 @app.route("/techniques")
 def techniques():
-    """Creates and sorts a list of all project by the technique used.
-    Then it displays a page of all projects"""
+    """ Technique view
+
+    Returns a view of the technique page with each technique on its own
+    row, together with its relevant projects. 
+
+    Returns
+    -------
+    render_template
+    
+    """
     
     master_list = []
     technique_list = data.get_techniques(db)
@@ -60,8 +106,21 @@ def techniques():
 
 @app.route("/list", methods=["POST", "GET"])
 def list():
-    """Creates a page where you can search the database
-    for projects and sort them"""
+    """List view
+
+    Returns a view of the list page. Utilises the HTML POST
+    method to request data from user for use in database search.
+
+    If the method is POST the function will request projects from the
+    data.search function and pass them on to the render_template
+    method. If the method is GET it will simply return all projects
+    from data.search to render_template.
+    
+    Returns
+    --------
+    render_template
+
+    """
     technique_data = data.get_techniques(db)
     search_fields = data.get_searchfields(db)
 
@@ -80,7 +139,6 @@ def list():
                                          techniques=techniques,
                                          sort_by=sort,
                                          sort_order=order)
-        print(requested_projects)
         return render_template("list.html",**locals())
     else:
         requested_projects = data.search(db)
@@ -88,6 +146,23 @@ def list():
 
 @app.route("/project/<project_id>")
 def project(project_id):
+    """Project view
+
+    Returns a view of the project page. Takes as input a GET
+    variable from Flask's route method and requests the desired
+    project from the database based upon this integer value.
+
+    Parameters
+    ----------
+    project_id : int
+       The integer representing the desired project_id key in
+       the database.
+
+    Returns
+    --------
+    render_template
+
+    """
     if data.get_project(db, int(project_id)):
         return render_template("project.html",
                            project=data.get_project(db,
@@ -96,6 +171,16 @@ def project(project_id):
 @app.route("/edit")
 @login_required
 def edit():
+    """Edit view
+    
+    Returns a view of the edit page. The edit page is a list of 
+    all the currently existing projects in the database.
+
+    Returns
+    -------
+    render_template
+    
+    """
     global db
     all_projects = data.search(db, search="")
     table_fields = ["project_id",
@@ -107,6 +192,27 @@ def edit():
 @app.route("/modify/<project_id>", methods=["GET", "POST"])
 @login_required
 def modify(project_id):
+    """Modify view
+
+    Returns a view of the modify page. The modify page supports both
+    HTML GET and POST methods. The GET method is used to request
+    the desired project, and is passed into the modify function through
+    Flask's routing method. This data is then used to populate the 
+    fields on the page. The POST method is used to populate the WTForm
+    instance, which is then used to edit the actual database.
+    
+
+    Parameters
+    ----------
+    project_id : int
+        The integer representing the desired project_id key in
+    the database.
+
+    Returns
+    ----------
+    render_template
+
+    """
     global db
 
     if project_id == "add":
@@ -148,13 +254,23 @@ def modify(project_id):
     # Instantiated WTForm of ModifyForm type
     class_kw = forms.class_kw
     
-
-        
-
     return render_template("modify.html", **locals())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """Login view
+
+    Returns a view of the login page. The login page lets you log in 
+    if you aren't yet authenticated. If the login is successful, it
+    redirects to the edit view. HTML GET and POST methods are used
+    to get the data from the end user.
+
+    Returns
+    -------
+    render_template
+       
+
+    """
     authorized = False
     if request.method == "POST":
         # Check if user is in JSON DB.
@@ -180,15 +296,45 @@ def login():
 @app.route("/logout")
 @login_required
 def logout():
+    """Logout view
+    
+    Returns logout view as well as logs the user out with flask_login.
+    logout_user().
+
+    Returns
+    --------
+    string
+
+    """
     logout_user()
     return "Logged ya out, brosef."
 
 @app.errorhandler(404)
 def page_not_found(error):
+    """404 view
+    
+    Returns 404 view for page not found.
+
+    Returns
+    -------
+    render_template
+       
+
+    """
     return render_template("page_not_found.html"), 404
 
 @app.errorhandler(401)
 def invalid_login(error):
+    """401 view
+
+    Returns the 401 view for not authenticated.
+
+    Returns
+    --------
+    render_template
+
+
+    """
     return render_template("access_denied.html"), 401
 if __name__ == "__main__":
     app.run(debug=True)

@@ -12,6 +12,11 @@ class Database():
     
 
 class ModifyForm(Form):
+    """Form for modifying a project.
+    
+    
+
+    """
     def __init__(self, *args,  **kwargs):
         super().__init__(*args, **kwargs)
         
