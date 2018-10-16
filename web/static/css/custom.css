@@ -71,3 +71,12 @@ body {
     white-space:nowrap;
     text-overflow: ellipsis;
 }
+
+.image {
+    max-height:500px;
+
+}
+.row.match [class*="col-"]{
+    margin-bottom: -9999px;
+    padding-bottom:9999px;
+	
