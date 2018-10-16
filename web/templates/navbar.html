@@ -1,5 +1,5 @@
 {% block navbar %}
-        <nav class="navbar navbar-expand-lg navbar-dark trans fixed-top">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark trans">
             <a class="navbar-brand" href="#">Portfolio
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
@@ -23,10 +23,22 @@
                         <a class="nav-link" href="{{url_for('list')}}">Search
                         </a>
                     </li>
+                    {% block navbar_item %}
+                    {% endblock %}
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item{% if request.path == url_for('edit') %} active{% endif %}">
+                        <a class="nav-link" href="{{url_for('edit')}}">Edit
+                        </a>
+                </ul>
+	            <div class="navbar-text ml-auto text-white">
+	                <a href="{{url_for('logout')}}"><i class="fas fa-sign-in-alt"></i> Logout</a>
+	            </div>
+                {% else %}
                 </ul>
 	            <div class="navbar-text ml-auto text-white">
 	                <a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a>
 	            </div>
+                {% endif %}
             </div>
         </nav>
 {% endblock %}

@@ -30,41 +30,20 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->   
     </head>
-  <body style="background-color:rgba(0,0,0,0);">
-        <!-- Navigation bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark"
-	     style="background-color: transparent">
-          <a class="navbar-brand" href="#">Portfolio</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item{% if request.path == url_for('index') %} active{% endif %}">
-                <a class="nav-link" href="{{url_for('index')}}">Index</a>
-              </li>
-              <li class="nav-item{% if request.path == url_for('techniques') %} active{% endif %}">
-                <a class="nav-link" href="{{url_for('techniques')}}">Techniques</a>
-              </li>
-              <li class="nav-item{% if request.path == url_for('list') %} active{% endif %}">
-                <a class="nav-link" href="{{url_for('list')}}">Search</a>
-              </li>
-            </ul>
-	    <div class="navbar-text ml-auto text-white">
-	      <a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a>
-	    </div>
-          </div>
-        </nav>           
+    <body style="background-color:rgba(0,0,0,0);">
+        {% include "navbar.html" %}
+        {% block navbar %}
+        {% endblock %}
         {% block header_content %}
         {% endblock %}
-</div>
-{% block body %}
-      {% endblock %}
-      <!-- jQuery (necessary fr Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="../static/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+        </div>
+        {% block body %}
+        {% endblock %}
+        <!-- jQuery (necessary fr Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../static/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
       
-</body>
+    </body>
 </html>

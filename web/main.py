@@ -45,7 +45,7 @@ def index():
 def techniques():
     """Creates and sorts a list of all project by the technique used.
     Then it displays a page of all projects"""
-    
+
     master_list = []
     technique_list = data.get_techniques(db)
     for e in technique_list:
@@ -119,10 +119,10 @@ def modify(project_id):
                 if k == "techniques_used":
                     v = v.split(",")
                 db[-1][k] = v
-                    
+
             data.save(db, "data.json")
-                
-        
+
+
     elif  (project_id.isdigit() and
            int(project_id) in  [x["project_id"] for x in db]):
         # Get current project and its index
@@ -139,17 +139,17 @@ def modify(project_id):
                     if k == "techniques_used":
                         v = v.split(",")
                 project[0][k] = v
-                    
+
             data.save(db, "data.json")
-        
+
     else:
         abort(404)
-    
+
     # Instantiated WTForm of ModifyForm type
     class_kw = forms.class_kw
-    
 
-        
+
+
 
     return render_template("modify.html", **locals())
 
@@ -172,7 +172,6 @@ def login():
         if not authorized:
             flash("Invalid login, please try again.", "danger")
         elif authorized:
-            flash("Login succesful.", "success")
             return redirect(url_for("edit"))
 
     return render_template("login.html")
@@ -189,6 +188,9 @@ def page_not_found(error):
 
 @app.errorhandler(401)
 def invalid_login(error):
-    return render_template("access_denied.html"), 401
+    flash('You are not logged in.', "warning")
+    return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
