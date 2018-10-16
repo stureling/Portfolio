@@ -8,17 +8,24 @@ body {
 }
 
 .image-div {
-    background:url('../images/background.jpg');
+    background:url('../images/background2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: inset 0px 0px 200px 0px rgba(0,0,0,1);
 }
 
 .image-bg {
-    background:url('../images/background.jpg') no-repeat center center fixed;
+    background:url('../images/background2.jpg') no-repeat center center fixed;
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: inset 0px 0px 200px 0px rgba(0,0,0,1);
+}
+
+.image-bg-noshade {
+    background:url('../images/background2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 
@@ -55,7 +62,7 @@ body {
 }
 
 .bg-semi {
-    background-color:rgba(150,150,150, 0.1);
+    background-color:rgba(150,150,150, 0.15);
 }
 
 .form-control {
@@ -76,7 +83,3 @@ body {
     max-height:500px;
 
 }
-.row.match [class*="col-"]{
-    margin-bottom: -9999px;
-    padding-bottom:9999px;
-	

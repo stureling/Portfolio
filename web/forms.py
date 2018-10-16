@@ -3,7 +3,7 @@ from wtforms import validators, IntegerField, DateField
 from wtforms import TextAreaField, ValidationError
 import re
 
-class_kw = "form-control text-light bg-dark"
+class_kw = "form-control text-dark bg-light"
 
 class Database():
     def __init__(self, *args, **kwargs):

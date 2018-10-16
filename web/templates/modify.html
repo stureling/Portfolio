@@ -1,9 +1,17 @@
-{% extends "admin_template.html" %}
+{% extends "main_template.html" %}
+{% block html_conf %}class="image-bg"{% endblock %}
+{% block body_conf %}style="background-color:rgba(0,0,0,0);"{% endblock %}
+{% block title %}Edit{% endblock %}
+{% block body %}
+{% include "navbar.html" %}
+{% block navbar %}
+{% endblock %}
 {% import "form.html" as forms with context %}
 
-{% block body %}
-<div class="h-100 container">
-  <div class="h-100 row align-items-sm-center text-light">
+
+<div class="h-100 container mw-100">
+  <div class="h-100 m-5 row align-items-sm-center text-light">
+    
     <div class=" col-md-7 m-2 p-3 bg-trans bg-shadow-dark rounded">
       {% include "message_flashing.html" %}
       <!-- Form for input -->
@@ -74,7 +82,6 @@
 	    {{ forms.input("techniques_used") }}
 	</div>
       </div>
-      
       <div class="form-row">
 	<span>Image file</span>
 	<div class="custom-file">

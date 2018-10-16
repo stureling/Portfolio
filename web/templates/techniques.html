@@ -27,12 +27,16 @@
                     </li>
                 </ul>
                 <div class="dropdown">
-                    <button class="btn trans btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:0px">
-                        Navigation
+                  <button class="btn  btn-outline-light dropdown-toggle" type="button"
+			  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+			  aria-expanded="false" style="border:0px">
+                      Navigation
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu trans" aria-labelledby="dropdownMenuButton">
                     {% for technique in master_list %}
-                        <a href="#{{technique[0]}}"><h3> {{technique[0]|capitalize}}</h3></a>
+                    <a href="#{{technique[0]}}"
+		       class="text-white"> {{technique[0]|capitalize}}</a>
+		    <br>
                     {% endfor %}
                     </div>
                 </div>
@@ -50,26 +54,27 @@
                 {% endif %}
             </div>
         </nav>
+	
     {% include "div_image.html" %}
     {% block div_image  %}
     {% endblock %}
     </div>
-    <div class="container mw-100 bg-dark" style="height: 15px;">
-    </div>
+
     {% for e in master_list %}
-    <div id="{{e[0]}}" class="container mw-100">
-        <div class="jumbotron p-2 text-white text-center my-2 rounded bg-dark" >
-            <h1 class="display-4"> {{e[0]|capitalize}}</h1>
+<div id="{{e[0]}}" class="container mw-100">
+        <div class="jumbotron text-light text-center 
+		    p-2 my-5 image-bg-noshade" >
+          <h1 class="display-4"> {{e[0]|upper}}</h1>
         </div>
-    </div>
-    <div class="container mw-100">
-        <div class="row mx-auto">
-            {%for project in e[1] %}
-            {% include "card.html" %}
-            {% block card %}
-            {% endblock %}
-            {% endfor %}
-        </div>
-    </div>
+</div>
+<div class="container mw-100 bg-light">
+  <div class="row mx-auto">
+    {%for project in e[1] %}
+    {% include "card.html" %}
+    {% block card %}
+    {% endblock %}
+    {% endfor %}
+  </div>
+</div>
     {% endfor %}
 {% endblock %}

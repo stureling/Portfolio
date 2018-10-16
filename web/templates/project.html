@@ -1,19 +1,22 @@
 {% extends "main_template.html" %}
-{% block html_conf %}class="class="image-bg h-100"{% endblock %}
-{% block body_conf %}class="h-100"{% endblock %}
+{% block html_conf %}class="image-bg"{% endblock %}
+{% block body_conf %}style="background-color:rgba(0,0,0,0);"{% endblock %}
 {% block title %}{{project["project_name"]}}{% endblock %}
 {% block body %}
     {% include "navbar.html" %}
     {% block navbar %}
     {% endblock %}
-<div class="container-fluid image-div h-100">
+<div class="container mw-100">
   <div class="row justify-content-center">
     &nbsp;
     </div>
   <div class="row h-100">
-    <div class="col-xl m-5  h-100">
+    <div class="col-xl m-5" style="height:500px">
       <div id="carouselExampleControls" class="carousel
-					       slide h-100 w-100" data-ride="carousel">
+					       slide h-100
+					        w-100
+					       "
+	   data-ride="carousel">
         <div class="carousel-inner w-100 h-100">
           <div class="carousel-item active">
             <img class="d-block mx-auto rounded border
@@ -38,7 +41,7 @@
     <div class="col m-5">
 
       <div class="col w-100 h-100  text-white p-3 text-center
-		  rounded bg-dark">
+		  rounded bg-semi bg-shadow-dark">
         <h1 class="display-5 ">{{project['project_name']}}</h1>
         <h5 class="display-5">{{project['techniques_used'][0]|capitalize}}{% for technique in project['techniques_used'][1:]%}, {{technique|capitalize}}{% endfor %}</h5>
         <div class="row">

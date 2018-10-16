@@ -163,10 +163,16 @@ def project(project_id):
     render_template
 
     """
-    if data.get_project(db, int(project_id)):
-        return render_template("project.html",
-                           project=data.get_project(db,
-                                            int(project_id)))
+    if project_id.isdigit():
+        valid_project = data.get_project(db, int(project_id))
+        if valid_project:
+            return render_template("project.html",
+                                   project=data.get_project(db,
+                                                            int(project_id)))
+        else:
+            abort(404)
+    else:
+        abort(404)
 
 @app.route("/edit")
 @login_required
@@ -306,7 +312,7 @@ def logout():
 
     """
     logout_user()
-    return "Logged ya out, brosef."
+    return redirect(url_for("index"))
 
 @app.errorhandler(404)
 def page_not_found(error):
