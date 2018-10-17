@@ -1,6 +1,6 @@
 from wtforms import Form, BooleanField, StringField
 from wtforms import validators, IntegerField, DateField
-from wtforms import TextAreaField, ValidationError
+from wtforms import TextAreaField, ValidationError, MultipleFileField
 import re
 
 class_kw = "form-control text-dark bg-light"
@@ -41,7 +41,7 @@ class ModifyForm(Form):
     course_id = StringField("Course ID")
     project_id = IntegerField("Project ID",
                               [validators.InputRequired()])
-    big_image = StringField("Big images")
+    images = MultipleFileField("Image File")
 
 class ModifyFormAdd(ModifyForm):
     """ Form for adding new projects
