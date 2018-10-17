@@ -30,8 +30,8 @@ class ModifyForm(Form):
     external_link = StringField("External Link",
                                 [validators.URL(), validators.Optional()])
     techniques_used = StringField("Techniques Used",
-                                  [validators.Regexp("\w{1,}[,\n]{1,}",
-                                                     flags=re.IGNORECASE, message="Please enter as comma-separated words.")])
+                                  [validators.Regexp("[a-z]",
+                                                     flags=re.IGNORECASE, message="Please enter at least one technique.")])
     project_name = StringField("Project Name",
                                [validators.Length(min=1)])
     course_id = StringField("Course ID")

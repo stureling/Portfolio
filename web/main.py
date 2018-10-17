@@ -174,7 +174,7 @@ def project(project_id):
     else:
         abort(404)
 
-@app.route("/edit")
+@app.route("/edit", methods=["GET", "POST"])
 @login_required
 def edit():
     """Edit view
@@ -188,6 +188,12 @@ def edit():
     
     """
     global db
+    # Delete project
+    if request.method == "POST":
+        data.remove_project(db, int(request.form["delete"]))
+        data.save(db, "data.json")
+        flash("Project deleted.", "success")
+        
     all_projects = data.search(db, search="")
     table_fields = ["project_id",
                     "project_name",
@@ -229,12 +235,10 @@ def modify(project_id):
             db.append({})
             for k,v in form.data.items():
                 if k == "techniques_used":
-                    v = v.split(",")
+                    v = v.split(" ")
                 db[-1][k] = v
 
             data.save(db, "data.json")
-
-
     elif  (project_id.isdigit() and
            int(project_id) in  [x["project_id"] for x in db]):
         # Get current project and its index
@@ -249,7 +253,8 @@ def modify(project_id):
             for k,v in form.data.items():
                 if project[0][k] != v:
                     if k == "techniques_used":
-                        v = v.split(",")
+                        print(v.split(" "))
+                        v = v.split(" ")
                 project[0][k] = v
 
             data.save(db, "data.json")
