@@ -191,7 +191,6 @@ def edit():
 
     """
     db = data.load("data.json")
-    global db
     # Delete project
     if request.method == "POST":
         data.remove_project(db, int(request.form["delete"]))
