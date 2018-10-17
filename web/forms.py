@@ -15,8 +15,16 @@ class ModifyForm(Form):
     def __init__(self, *args,  **kwargs):
         super().__init__(*args, **kwargs)
         
-    start_date = StringField("Start Date")
-    end_date = StringField("End Date")
+    pattern = "^([\d]{4})-([0][0-9]|[1][0-2])-([0][1-9]|[1-2][1-9]|[3][0-1])$"
+        
+    start_date = StringField("Start Date",
+                             validators=[validators.Regexp(pattern,
+                                                           message="Please enter date in format YYYY-MM-DD."),
+                                         validators.Optional()])
+    end_date = StringField("End Date",
+                           validators=[validators.Regexp(pattern,
+                                                         message="Please enter date in format YYYY-MM-DD."),
+                                       validators.Optional()])
     course_name = StringField("Course Name")
     long_description = TextAreaField("Long Description")
     short_description = TextAreaField("Short Description")
@@ -25,7 +33,8 @@ class ModifyForm(Form):
     external_link = StringField("External Link",
                                 [validators.URL(), validators.Optional()])
     techniques_used = StringField("Techniques Used",
-                                  [validators.Regexp("[a-z]",
+                                  filters=[lambda x: re.sub("(\[)|'|\]|,", "", str(x))],
+                                  validators=[validators.Regexp("[a-z]",
                                                      flags=re.IGNORECASE, message="Please enter at least one technique.")])
     project_name = StringField("Project Name",
                                [validators.Length(min=1)])

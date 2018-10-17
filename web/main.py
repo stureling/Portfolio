@@ -239,6 +239,7 @@ def modify(project_id):
             for k,v in form.data.items():
                 if k == "techniques_used":
                     v = v.split(" ")
+                    v = [x for x  in v if x != ""]
                 db[-1][k] = v
 
             data.save(db, "data.json")
@@ -256,8 +257,9 @@ def modify(project_id):
             for k,v in form.data.items():
                 if project[0][k] != v:
                     if k == "techniques_used":
-                        print(v.split(" "))
+                        #                        print(v)
                         v = v.split(" ")
+                        v = [x for x  in v if x != ""]
                 project[0][k] = v
 
             data.save( db, "data.json")
@@ -350,6 +352,14 @@ def invalid_login(error):
     """
     flash('You are not logged in.', "warning")
     return redirect(url_for("login"))
+
+@app.route("/list")
+def three():
+    """ Function for handling three slashes
+    
+    """
+    print("lol")
+    return "lol"
 
 if __name__ == "__main__":
     app.run(debug=True)
