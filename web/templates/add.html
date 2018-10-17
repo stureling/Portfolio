@@ -1,9 +1,16 @@
-{% extends "admin_template.html" %}
-
+{% extends "main_template.html" %}
+{% block html_conf %}class="image-bg"{% endblock %}
+{% block body_conf %}style="background-color:rgba(0,0,0,0);"{% endblock %}
+{% block title %}Edit{% endblock %}
 {% block body %}
+{% include "navbar.html" %}
+{% block navbar %}
+{% endblock %}
+
+
 <div class="h-100 container mw-100">
   <div class="h-75 row align-items-center">
-    <div class="col p-5 m-5 bg-semi bg-shadow-dark rounded text-light">
+    <div class="col p-5 m-5 bg-semi bg-shadow-dark rounded text-white">
     <table class="table
 		  table-striped
 		  table-hover
