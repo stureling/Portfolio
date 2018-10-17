@@ -40,5 +40,23 @@
             "2.jpg",
             "3.jpg"
         ]
+    },
+    {
+        "start_date": "182",
+        "end_date": "1999",
+        "course_name": "Heyo",
+        "long_description": "dkowapdkowa",
+        "short_description": "dkwlqdklwa",
+        "group_size": null,
+        "academic_credits": "",
+        "external_link": "",
+        "techniques_used": [
+            "python",
+            "csv"
+        ],
+        "project_name": "new",
+        "course_id": "",
+        "big_image": "",
+        "project_id": 3
     }
 ]
