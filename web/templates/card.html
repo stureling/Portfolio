@@ -1,7 +1,7 @@
 {% block cards %}
 <div class="col  my-5 mx-2">
-    <div class="card text-left mx-auto bg-white h-100 bg-shadow" style="width:25em;">
-        <img class="card-img-top"
+  <div class="card text-left mx-auto bg-white h-100 bg-shadow" style="width:25em;">
+      <img class="card-img-top d-block img-fluid"
 	    src="{{url_for('static', 
 		 filename=get_images(project['project_id'])[0])}}"  
         alt="{{project['small_image']}}">

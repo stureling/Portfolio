@@ -3,7 +3,16 @@
 {% block body %}
     {% include "div_image.html" %}
 {% block div_image  %}
+<div class="row h-75 mt-5">
+  <div class="col">
+    </div>
+  <div class="col text-center">
+    <h1 class="text-light amatic-font huge">LET'S GET TECHNICAL</h1>
   </div>
+  <div class="col">
+    </div>
+  </div>
+</div>
     {% endblock %}
     {% include "navbar.html" %}
     {% block navbar %}
@@ -13,9 +22,10 @@
         <div id="{{e[0]}}" class="container mw-100">
             <div class="jumbotron text-light text-center 
 		        p-2 my-5 image-bg-noshade" >
-            <h1 class="display-4"> {{e[0]|upper}}</h1>
+            <h1 class="display-4 amatic-font"> {{e[0]|upper}}</h1>
             </div>
         </div>
+	
         <div class="container mw-100 bg-light">
             <div class="row mx-auto">
                 {%for project in e[1] %}
@@ -25,5 +35,5 @@
                 {% endfor %}
             </div>
         </div>
-    {% endfor %}
+	{% endfor %}
 {% endblock %}

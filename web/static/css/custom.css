@@ -2,6 +2,15 @@
     background-color: transparent;
 }
 
+.amatic-font {
+    font-family: 'Amatic SC', cursive;
+    
+}
+
+h1.huge {
+    font-size:5em;
+}
+
 body {
     font-family: Verdana, Geneva, sans-serif;
     font-family: 'Advent Pro';
