@@ -52,7 +52,7 @@
           <div class="display-2"{% filter upper%}
 	       >Recent projects{% endfilter%}</div>
             <div class="row">
-                {%for project in latest_projects[:4] %}
+                {%for project in latest_projects[:3] %}
                 {% include "card.html" %}
                 {% block cards %}
                 {% endblock %}

@@ -1,54 +1,44 @@
 [
     {
-        "start_date": "",
-        "end_date": "",
-        "course_name": "",
-        "long_description": "",
-        "short_description": "",
-        "group_size": null,
-        "academic_credits": "",
+        "start_date": "2018-09-05",
+        "short_description": "Hej h\u00e5, hej h\u00e5, vi till v\u00e5r gruva g\u00e5",
+        "course_name": "OK\u00c4NT",
+        "long_description": "no no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxc",
+        "group_size": 2,
+        "academic_credits": "WUT?",
         "external_link": "",
         "techniques_used": [
             "ada"
         ],
-        "project_name": "Hej two",
-        "course_id": "",
-        "big_image": "",
-        "project_id": 10
+        "project_name": "python data-module test script",
+        "course_id": "TDP003",
+        "end_date": "2009-09-06",
+        "project_id": 7,
+        "big_image": [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg"
+        ]
     },
     {
-        "start_date": "",
-        "end_date": "",
-        "course_name": "",
-        "long_description": "",
-        "short_description": "",
+        "start_date": "2009-09-05",
+        "short_description": "no",
+        "course_name": "OK\u00c4NT",
+        "long_description": "no no no",
         "group_size": 2,
-        "academic_credits": "",
-        "external_link": "",
-        "techniques_used": [
-            "asd",
-            ""
-        ],
-        "project_name": "Nah",
-        "course_id": "",
-        "big_image": "",
-        "project_id": 11
-    },
-    {
-        "start_date": "",
-        "end_date": "",
-        "course_name": "",
-        "long_description": "AKOk",
-        "short_description": "",
-        "group_size": null,
-        "academic_credits": "",
-        "external_link": "",
+        "academic_credits": "WUT?",
+        "external_link": "YY",
         "techniques_used": [
             "python"
         ],
-        "project_name": "Project fem",
-        "course_id": "",
-        "big_image": "",
-        "project_id": 125
+        "project_name": "python data-module test script",
+        "course_id": "TDP003",
+        "end_date": "2009-09-06",
+        "project_id": 8,
+        "big_image": [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg"
+        ]
     }
 ]
