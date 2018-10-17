@@ -234,7 +234,7 @@ def modify(project_id):
                     v = v.split(",")
                 db[-1][k] = v
 
-            data.save("data.json")
+            data.save( db, "data.json")
 
 
     elif  (project_id.isdigit() and
@@ -254,7 +254,7 @@ def modify(project_id):
                         v = v.split(",")
                 project[0][k] = v
 
-            data.save("data.json")
+            data.save( db, "data.json")
 
     else:
         abort(404)

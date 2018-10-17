@@ -1,80 +1,28 @@
 {% extends "main_template.html" %}
 {% block title %}Techniques{% endblock %}
 {% block body %}
-        <nav class="navbar navbar-expand-lg navbar-dark trans fixed-top">
-            <a class="navbar-brand" href="#">Portfolio
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" 
-                data-target="#navbarNav" aria-controls="navbarNav" 
-                aria-expanded="false" aria-label="Toggle navigation">
-
-                <span class="navbar-toggler-icon">
-                </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item{% if request.path == url_for('index') %} active{% endif %}">
-                        <a class="nav-link" href="{{url_for('index')}}">Index
-                        </a>
-                    </li>
-                    <li class="nav-item{% if request.path == url_for('techniques') %} active{% endif %}">
-                        <a class="nav-link" href="{{url_for('techniques')}}">Techniques
-                        </a>
-                    </li>
-                    <li class="nav-item{% if request.path == url_for('list') %} active{% endif %}">
-                        <a class="nav-link" href="{{url_for('list')}}">Search
-                        </a>
-                    </li>
-                </ul>
-                <div class="dropdown">
-                  <button class="btn  btn-outline-light dropdown-toggle" type="button"
-			  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-			  aria-expanded="false" style="border:0px">
-                      Navigation
-                    </button>
-                    <div class="dropdown-menu trans" aria-labelledby="dropdownMenuButton">
-                    {% for technique in master_list %}
-                    <a href="#{{technique[0]}}"
-		       class="text-white"> {{technique[0]|capitalize}}</a>
-		            <br>
-                    {% endfor %}
-                    </div>
-                </div>
-                {% if current_user.is_authenticated %}
-	            <div class="navbar-text text-white">
-	                <a href="{{url_for('edit')}}"><i class="fas fa-sign-in-alt"></i> Edit</a>
-	            </div>
-	            <div class="navbar-text ml-auto text-white">
-	                <a href="{{url_for('logout')}}"><i class="fas fa-sign-in-alt"></i> Logout</a>
-	            </div>
-                {% else %}
-	            <div class="navbar-text ml-auto text-white">
-	                <a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a>
-	            </div>
-                {% endif %}
-            </div>
-        </nav>
-	
     {% include "div_image.html" %}
     {% block div_image  %}
     {% endblock %}
-    </div>
-
-    {% for e in master_list %}
-<div id="{{e[0]}}" class="container mw-100">
-        <div class="jumbotron text-light text-center 
-		    p-2 my-5 image-bg-noshade" >
-          <h1 class="display-4"> {{e[0]|upper}}</h1>
-        </div>
-</div>
-<div class="container mw-100 bg-light">
-  <div class="row mx-auto">
-    {%for project in e[1] %}
-    {% include "card.html" %}
-    {% block card %}
+    {% include "navbar.html" %}
+    {% block navbar %}
     {% endblock %}
-    {% endfor %}
-  </div>
-</div>
+    </div>
+    {% for e in master_list %}
+        <div id="{{e[0]}}" class="container mw-100">
+            <div class="jumbotron text-light text-center 
+		        p-2 my-5 image-bg-noshade" >
+            <h1 class="display-4"> {{e[0]|upper}}</h1>
+            </div>
+        </div>
+        <div class="container mw-100 bg-light">
+            <div class="row mx-auto">
+                {%for project in e[1] %}
+                {% include "card.html" %}
+                {% block card %}
+                {% endblock %}
+                {% endfor %}
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
