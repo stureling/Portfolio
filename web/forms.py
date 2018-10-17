@@ -8,7 +8,8 @@ class_kw = "form-control text-dark bg-light"
 class ModifyForm(Form):
     """Form for modifying a project.
     
-    
+    It has several fields of various types that are interpreted
+    by WTForms.
 
     """
     def __init__(self, *args,  **kwargs):

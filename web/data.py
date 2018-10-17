@@ -2,6 +2,11 @@ import json
 import re
 
 def load(filename):
+    """
+    Please refer to
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/portfolio-api_python3/data-module.html#load>`_
+
+    """
     try:
         with open(filename, "r") as json_db:
             db = json.load(json_db)
@@ -44,6 +49,12 @@ def load_users(filename):
     filename : str
        The file to read from.
 
+    Returns
+    ----------
+    db : dict
+       A dictionary of all the users.
+       
+
     """
     try:
         with open(filename, "r") as json_db:
@@ -55,9 +66,19 @@ def load_users(filename):
     return db
 
 def get_project_count(db):
+    """
+    Please refer to
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/portfolio-api_python3/data-module.html#get_project_count>`_
+
+    """
     return len(db)
 
 def get_project(db, i_d):
+    """
+    Please refer to
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/portfolio-api_python3/data-module.html#get_project>`_
+
+    """
     for project in db:
         key = project["project_id"]
         if key == i_d:
@@ -84,6 +105,12 @@ def remove_project(db, i_d):
         
 def search(db, sort_by="start_date", sort_order="desc", techniques=None,
            search=None, search_fields=None):
+
+    """
+    Please refer to
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/portfolio-api_python3/data-module.html#search>`_
+
+    """
     
     technique_projects = []
     search_projects = []
@@ -130,6 +157,11 @@ def search(db, sort_by="start_date", sort_order="desc", techniques=None,
                   reverse=reverse_order)
         
 def get_techniques(db):
+    """
+    Please refer to
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/portfolio-api_python3/data-module.html#get_techniques>`_
+
+    """
     techniques = []
     for project in db:
         project_techniques = project["techniques_used"]
@@ -140,6 +172,22 @@ def get_techniques(db):
     return techniques
 
 def get_searchfields(db):
+    """ Get all the search fields
+
+    Function returns all the searchable fields present
+    in specified database db.
+
+    Parameters
+    ---------
+    db : list
+       A list object representing the database.
+
+    Returns
+    ---------
+    search_fields : list
+       A list of all the searchable fields.
+
+    """
     search_fields = []
     for project in db:
         for key in project:
@@ -148,6 +196,11 @@ def get_searchfields(db):
     return search_fields
 
 def get_technique_stats(db):
+    """
+    Please refer to
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/portfolio-api_python3/data-module.html#get_technique_stats>`_
+
+    """
     techniques = {}
     
     # Build up a list of all the techniques used.
