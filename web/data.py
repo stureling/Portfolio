@@ -18,7 +18,6 @@ def save(database, filename):
     """ Save current database to JSON file."""
     try:
         new_json = json.dumps(database, indent=4)
-        print(new_json)
         with open(filename, "w") as f:
             for line in new_json:
                 f.write(line)
@@ -48,6 +47,12 @@ def get_project(db, i_d):
         if key == i_d:
             return project
 
+def remove_project(db, i_d):
+    project = get_project(db, i_d)
+    if project in db:
+        db.remove(project)
+            
+        
 def search(db, sort_by="start_date", sort_order="desc", techniques=None,
            search=None, search_fields=None):
     
@@ -133,19 +138,3 @@ def get_technique_stats(db):
                                           "name":project["project_name"]})
             
     return techniques
-"""
-db = load("data.json")
-
-#search_result = search(db, techniques=None,
-#search_fields=["course_id"], search="0")
-
-search_result =  search(db, sort_by="end_date",  search='okänt', techniques=[],
-                        search_fields=['project_id','project_name','course_name'])
-#search_result = search(db)
-
-for item in search_result:
-    print(item)
-    print("\n")
-
-  
-"""
