@@ -75,6 +75,7 @@ def index():
     render_template
 
     """
+    db = data.load("data.json")
     latest_projects = data.search(db, sort_by='end_date')
     return render_template("index.html", database=db,
                            latest_projects=latest_projects)
@@ -196,7 +197,7 @@ def edit():
         data.remove_project(db, int(request.form["delete"]))
         data.save(db, "data.json")
         flash("Project deleted.", "success")
-        
+
     all_projects = data.search(db, search="")
     table_fields = ["project_id",
                     "project_name",
