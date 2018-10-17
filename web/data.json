@@ -1,7 +1,7 @@
 [
     {
         "start_date": "2018-09-05",
-        "short_description": "Hej hå, hej hå, vi till vår gruva gå",
+        "short_description": "Hej h\u00e5, hej h\u00e5, vi till v\u00e5r gruva g\u00e5",
         "course_name": "OK\u00c4NT",
         "long_description": "no no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxcno no noasdsadasdvxc",
         "group_size": 2,
@@ -168,23 +168,5 @@
             "2.jpg",
             "3.jpg"
         ]
-    },
-    {
-        "start_date": "",
-        "end_date": "",
-        "course_name": "",
-        "long_description": "",
-        "short_description": "",
-        "group_size": 2,
-        "academic_credits": "",
-        "external_link": "",
-        "techniques_used": [
-            "asd",
-            ""
-        ],
-        "project_name": "Nah",
-        "course_id": "",
-        "big_image": "",
-        "project_id": 11
     }
 ]
