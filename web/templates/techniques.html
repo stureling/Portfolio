@@ -32,15 +32,15 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {% for technique in master_list %}
-                        <a href="#{{technique[0]}}"><h3> {{technique[0]|capitalize}}</h3></a>
+                        <a href="#{{technique[0]}}"><h3 class="text-center">{{technique[0]|capitalize}}</h3></a>
                     {% endfor %}
                     </div>
                 </div>
                 {% if current_user.is_authenticated %}
-	            <div class="navbar-text ml-auto text-white">
+	            <div class="navbar-text text-white">
 	                <a href="{{url_for('edit')}}"><i class="fas fa-sign-in-alt"></i> Edit</a>
 	            </div>
-	            <div class="navbar-text ml-3 text-white">
+	            <div class="navbar-text ml-auto text-white">
 	                <a href="{{url_for('logout')}}"><i class="fas fa-sign-in-alt"></i> Logout</a>
 	            </div>
                 {% else %}
