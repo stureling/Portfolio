@@ -455,6 +455,10 @@ def three():
     print("lol")
     return "lol"
 
+@app.route("/get")
+def get():
+    return "<p>What do you mean this isn't what you meant when you said 'GET'? It's clearly a get!</p> <img src='static/images/goat.jpg' style='height:100vh;'>"
+
 @app.context_processor
 def imggetter():
     return dict(get_images=get_images)
