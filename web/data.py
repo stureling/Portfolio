@@ -2,8 +2,6 @@ import json
 import re
 
 def load(filename):
-    """ Loads JSON formatted project data from a file and
-    returns a list of all projects, sorted after number."""
     try:
         with open(filename, "r") as json_db:
             db = json.load(json_db)
@@ -15,7 +13,19 @@ def load(filename):
     return db
 
 def save(database, filename):
-    """ Save current database to JSON file."""
+    """ Saves the database to file
+    
+    Function takes in a database in the form of a list and saves it to the
+    desired filename in the current working directory.
+
+    Parameters
+    ----------
+    database : list
+       The database to be modified, as a list.
+    filename : str
+       The file to save to, as as string.
+
+    """
     try:
         new_json = json.dumps(database, indent=4)
         with open(filename, "w") as f:
@@ -25,7 +35,16 @@ def save(database, filename):
         return None
 
 def load_users(filename):
-    """ Loads JSON formatted user data from a file"""
+    """ Loads users from file
+
+    Loads JSON formatted user data from a specified file.
+    
+    Parameters
+    ----------
+    filename : str
+       The file to read from.
+
+    """
     try:
         with open(filename, "r") as json_db:
             db = json.load(json_db)
@@ -36,18 +55,28 @@ def load_users(filename):
     return db
 
 def get_project_count(db):
-    """ Retrieves the number of projects in a project list."""
     return len(db)
 
 def get_project(db, i_d):
-    """ Fetches the project with the specified id from the 
-    specified list."""
     for project in db:
         key = project["project_id"]
         if key == i_d:
             return project
 
 def remove_project(db, i_d):
+    """ Removes a project
+
+    Function removes a project with a certain ID from the
+    database list.
+
+    Parameters
+    ----------
+    db : list
+       The list to remove the project from.
+    i_d : int
+       The project_id to remove, as an int.
+
+    """
     project = get_project(db, i_d)
     if project in db:
         db.remove(project)
@@ -101,8 +130,6 @@ def search(db, sort_by="start_date", sort_order="desc", techniques=None,
                   reverse=reverse_order)
         
 def get_techniques(db):
-    """Fetches a list of all the techniques from the specified
-    project list in lexicographical order."""
     techniques = []
     for project in db:
         project_techniques = project["techniques_used"]
@@ -121,8 +148,6 @@ def get_searchfields(db):
     return search_fields
 
 def get_technique_stats(db):
-    """Collects and returns statistics for all techniques in 
-    the specified project list."""
     techniques = {}
     
     # Build up a list of all the techniques used.

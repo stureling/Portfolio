@@ -5,12 +5,6 @@ import re
 
 class_kw = "form-control text-dark bg-light"
 
-class Database():
-    def __init__(self, *args, **kwargs):
-        pass
-        
-    
-
 class ModifyForm(Form):
     """Form for modifying a project.
     
@@ -25,7 +19,7 @@ class ModifyForm(Form):
     course_name = StringField("Course Name")
     long_description = TextAreaField("Long Description")
     short_description = TextAreaField("Short Description")
-    group_size = IntegerField("Group Size")
+    group_size = IntegerField("Group Size", [validators.Optional()])
     academic_credits = StringField("Academic Credits")
     external_link = StringField("External Link",
                                 [validators.URL(), validators.Optional()])
@@ -40,7 +34,14 @@ class ModifyForm(Form):
     big_image = StringField("Big images")
 
 class ModifyFormAdd(ModifyForm):
+    """ Form for adding new projects
+    
+    Like ModifyForm, except it inherts a validations method for 
+    the project_id field in order to avoid conflicts with other
+    projects already in the database.
 
+
+    """
     def __init__(self, *args, **kwargs):
         self.db = kwargs["database"]
         super().__init__(*args, **kwargs)

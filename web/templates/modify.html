@@ -10,8 +10,9 @@
 
 
 <div class="h-100 container mw-100">
-  <div class="h-100 m-5 row align-items-sm-center text-light">
-    
+  <div class="m-5 row align-items-sm-center text-light"
+       style="height:100vh">
+
     <div class=" col-md-7 m-2 p-3 bg-trans bg-shadow-dark rounded">
       {% include "message_flashing.html" %}
       <!-- Form for input -->
@@ -82,16 +83,7 @@
 	    {{ forms.input("techniques_used") }}
 	</div>
       </div>
-      <div class="form-row">
-	<span>Image file</span>
-	<div class="custom-file">
-	  <input type="file" class="custom-file-input
-				    bg-dark text-light">
-	  <label class="custom-file-label bg-dark text-light"
-		 for="validatedCustomFile">Choose file...</label>
-	  <div class="invalid-feedback">
-	    Example invalid custom file feedback</div>
-	</div>
+
     </form>
     </div>
     </div>
