@@ -26,16 +26,21 @@
                     {% if request.path == url_for('techniques') %}
                     <li class="nav-item my-auto">
                         <div class="dropdown">
-                            <button class="btn btn-outline-light dropdown-toggle" type="button"
-			                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-			                aria-expanded="false" style="border:0px">
-                                Navigation
+                          <button class="btn btn-outline-light 
+					 dropdown-toggle"
+				  type="button"
+			          id="dropdownMenuButton"
+				  data-toggle="dropdown"
+				    aria-haspopup="true"
+			          aria-expanded="false"
+				  style="border:0px">
+                            Navigation
                             </button>
-                            <div class="dropdown-menu rounded bg-dark" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu rounded mt-3" aria-labelledby="dropdownMenuButton" style="background-color:rgba(0,0,0,0.5);">
                                 {% for technique in master_list %}
                                 <a href="#{{technique[0]}}"
-		                        class="text-white"> {{technique[0]|capitalize}}</a>
-	                            <br>
+		                        class="text-white m-2"> {{technique[0]|capitalize}}</a>
+
                                 {% endfor %}
                             </div>
                         </div>

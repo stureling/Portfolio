@@ -2,12 +2,13 @@
 {% block title %}Techniques{% endblock %}
 {% block body %}
     {% include "div_image.html" %}
-    {% block div_image  %}
+{% block div_image  %}
+  </div>
     {% endblock %}
     {% include "navbar.html" %}
     {% block navbar %}
     {% endblock %}
-    </div>
+</div>
     {% for e in master_list %}
         <div id="{{e[0]}}" class="container mw-100">
             <div class="jumbotron text-light text-center 
