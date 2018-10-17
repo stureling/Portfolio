@@ -23,8 +23,24 @@
                         <a class="nav-link" href="{{url_for('list')}}">Search
                         </a>
                     </li>
-                    {% block navbar_item %}
-                    {% endblock %}
+                    {% if request.path == url_for('techniques') %}
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn  btn-outline-light dropdown-toggle" type="button"
+			                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+			                aria-expanded="false" style="border:0px">
+                                Navigation
+                            </button>
+                            <div class="dropdown-menu rounded bg-dark" aria-labelledby="dropdownMenuButton">
+                                {% for technique in master_list %}
+                                <a href="#{{technique[0]}}"
+		                        class="text-white"> {{technique[0]|capitalize}}</a>
+	                            <br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
                 {% if current_user.is_authenticated %}
                     <li class="nav-item{% if request.path == url_for('edit') %} active{% endif %}">
                         <a class="nav-link" href="{{url_for('edit')}}">Edit
