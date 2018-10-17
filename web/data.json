@@ -1,5 +1,23 @@
 [
     {
+        "start_date": "182",
+        "end_date": "1999",
+        "course_name": "Heyo",
+        "long_description": "dkowapdkowa",
+        "short_description": "dkwlqdklwa",
+        "group_size": null,
+        "academic_credits": "",
+        "external_link": "",
+        "techniques_used": [
+            "python",
+            "csv"
+        ],
+        "project_name": "new",
+        "course_id": "",
+        "big_image": "",
+        "project_id": 3
+    },
+    {
         "start_date": "2018-09-05",
         "short_description": "Hej h\u00e5, hej h\u00e5, vi till v\u00e5r gruva g\u00e5",
         "course_name": "OK\u00c4NT",
@@ -19,44 +37,5 @@
             "2.jpg",
             "3.jpg"
         ]
-    },
-    {
-        "start_date": "2009-09-05",
-        "short_description": "no",
-        "course_name": "OK\u00c4NT",
-        "long_description": "no no no",
-        "group_size": 2,
-        "academic_credits": "WUT?",
-        "external_link": "YY",
-        "techniques_used": [
-            "python"
-        ],
-        "project_name": "python data-module test script",
-        "course_id": "TDP003",
-        "end_date": "2009-09-06",
-        "project_id": 8,
-        "big_image": [
-            "1.jpg",
-            "2.jpg",
-            "3.jpg"
-        ]
-    },
-    {
-        "start_date": "182",
-        "end_date": "1999",
-        "course_name": "Heyo",
-        "long_description": "dkowapdkowa",
-        "short_description": "dkwlqdklwa",
-        "group_size": null,
-        "academic_credits": "",
-        "external_link": "",
-        "techniques_used": [
-            "python",
-            "csv"
-        ],
-        "project_name": "new",
-        "course_id": "",
-        "big_image": "",
-        "project_id": 3
     }
 ]
