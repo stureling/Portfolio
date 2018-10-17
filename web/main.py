@@ -15,8 +15,8 @@ db = data.load("data.json")
 class User(UserMixin):
     """Flask login user
 
-    This is a basic user template for flask_login that inherits 
-    from flask_login's UserMixin class. 
+    This is a basic user template for flask_login that inherits
+    from flask_login's UserMixin class.
 
     Attributes
     ----------
@@ -64,7 +64,7 @@ def load_user(user_id):
 @app.route("/")
 def index():
     """ Index view
-    
+
     Returns a view for the index page. Fetches
     all the projects in the database and passes them
     on to render_template function together with the index.html
@@ -84,14 +84,15 @@ def techniques():
     """ Technique view
 
     Returns a view of the technique page with each technique on its own
-    row, together with its relevant projects. 
+    row, together with its relevant projects.
 
     Returns
     -------
     render_template
-    
+
     """
-    
+
+    db = data.load("data.json")
     master_list = []
     technique_list = data.get_techniques(db)
     for e in technique_list:
@@ -115,12 +116,13 @@ def list():
     data.search function and pass them on to the render_template
     method. If the method is GET it will simply return all projects
     from data.search to render_template.
-    
+
     Returns
     --------
     render_template
 
     """
+    db = data.load("data.json")
     technique_data = data.get_techniques(db)
     search_fields = data.get_searchfields(db)
 
@@ -163,6 +165,7 @@ def project(project_id):
     render_template
 
     """
+    db = data.load("data.json")
     if project_id.isdigit():
         valid_project = data.get_project(db, int(project_id))
         if valid_project:
@@ -178,16 +181,16 @@ def project(project_id):
 @login_required
 def edit():
     """Edit view
-    
-    Returns a view of the edit page. The edit page is a list of 
+
+    Returns a view of the edit page. The edit page is a list of
     all the currently existing projects in the database.
 
     Returns
     -------
     render_template
-    
+
     """
-    global db
+    db = data.load("data.json")
     all_projects = data.search(db, search="")
     table_fields = ["project_id",
                     "project_name",
@@ -203,10 +206,10 @@ def modify(project_id):
     Returns a view of the modify page. The modify page supports both
     HTML GET and POST methods. The GET method is used to request
     the desired project, and is passed into the modify function through
-    Flask's routing method. This data is then used to populate the 
+    Flask's routing method. This data is then used to populate the
     fields on the page. The POST method is used to populate the WTForm
     instance, which is then used to edit the actual database.
-    
+
 
     Parameters
     ----------
@@ -219,8 +222,7 @@ def modify(project_id):
     render_template
 
     """
-    global db
-
+    db = data.load("data.json")
     if project_id == "add":
         form = forms.ModifyFormAdd(request.form, database=db)
         # Add new project.
@@ -232,7 +234,7 @@ def modify(project_id):
                     v = v.split(",")
                 db[-1][k] = v
 
-            data.save(db, "data.json")
+            data.save("data.json")
 
 
     elif  (project_id.isdigit() and
@@ -252,7 +254,7 @@ def modify(project_id):
                         v = v.split(",")
                 project[0][k] = v
 
-            data.save(db, "data.json")
+            data.save("data.json")
 
     else:
         abort(404)
@@ -266,7 +268,7 @@ def modify(project_id):
 def login():
     """Login view
 
-    Returns a view of the login page. The login page lets you log in 
+    Returns a view of the login page. The login page lets you log in
     if you aren't yet authenticated. If the login is successful, it
     redirects to the edit view. HTML GET and POST methods are used
     to get the data from the end user.
@@ -274,7 +276,7 @@ def login():
     Returns
     -------
     render_template
-       
+
 
     """
     authorized = False
@@ -302,7 +304,7 @@ def login():
 @login_required
 def logout():
     """Logout view
-    
+
     Returns logout view as well as logs the user out with flask_login.
     logout_user().
 
@@ -317,13 +319,13 @@ def logout():
 @app.errorhandler(404)
 def page_not_found(error):
     """404 view
-    
+
     Returns 404 view for page not found.
 
     Returns
     -------
     render_template
-       
+
 
     """
     return render_template("page_not_found.html"), 404
