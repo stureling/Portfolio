@@ -1,0 +1,117 @@
+\documentclass{TDP003mall}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\definecolor{terminalgreen}{HTML}{8AE234}
+
+\newcommand{\version}{Version 0.1}
+\author{Eric Jönsson, \url{erijo137@student.liu.se}\\
+  Ida Bergquist, \url{idabe112@student.liu.se}}
+\title{Testdokumentation}
+\date{2018-10-16}
+\rhead{Ida Bergquist\\
+Eric Jönsson}
+
+
+
+\begin{document}
+\projectpage
+\tableofcontents
+\newpage
+\section{Revisionshistorik}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|l|X|l|}
+\hline
+\textbf{Ver.} & \textbf{Revisionsbeskrivning} & \textbf{Datum} \\\hline
+0.1 & Skapade testdokumentationen & 181016 \\\hline
+\end{tabularx}
+\end{table}
+
+\section{User Interface}
+\subsection{}
+\paragraph{Demand: } ID 1.1, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\paragraph{Input (test):}
+site\_url/
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|X|r|}\hline
+\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
+Valid & Main page loads with images displayed for every project. & PASSED \\\hline
+Invalid & Main page fails to display images. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+\subsection{}
+\paragraph{Demand: } ID 1.2, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\paragraph{Input (test):}
+site\_url/list, methods=HTTP\_POST, HTTP\_GET
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|X|r|}\hline
+\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
+Valid & A search lists projects with short description. & PASSED \\\hline
+Valid & Search page can be sorted.  & PASSED \\\hline
+Valid & Any search lists the projects that correspond to the search.  & PASSED \\\hline
+Invalid & Searching for projects that don't exist yields an empty page & PASSED \\\hline
+\end{tabularx}
+\end{table}
+\newpage
+\subsection{}
+\paragraph{Demand: } ID 1.3, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\paragraph{Input (test):}
+site\_url/project/test,  methods=HTTP\_GET
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|X|r|}\hline
+\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
+Valid & Requesting existing project yields a page with all the information relevant to that project. & PASSED \\\hline
+Valid & GET variable passed into  project/ URL returns a project.  & PASSED \\\hline
+Invalid & Entering an integer that doesn't correspond to a project returns a 404 code.  & PASSED \\\hline
+Invalid & Entering anything that isn't an integer results in a 404 code. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+\subsection{}
+\paragraph{Demand: }ID 1.4, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\paragraph{Input (test):}
+site\_url/techniques,  methods=HTTP\_GET
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|X|r|}\hline
+\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
+Valid & Every project, with its corresponding techniques, is displayed on the page. & PASSED \\\hline
+Invalid & Passing in a project without a technique list doesn't break the
+website. & ??? \\\hline
+\end{tabularx}
+\end{table}
+
+\subsection{}
+\paragraph{Demand: }ID 1.5, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\paragraph{Input (test):}
+site\_url,  methods=HTTP\_GET, HTTP\_POST
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|X|r|}\hline
+\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
+Valid & A small image is displayed on the search page for every project. & PASSED \\\hline
+Invalid & A project without images still displays a default image. & ??? \\\hline
+\end{tabularx}
+\end{table}
+\newpage
+\subsection{}
+\paragraph{Demand: }ID 1.6, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\paragraph{Input (test):}
+site\_project,  methods=HTTP\_GET
+
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|X|r|}\hline
+\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
+Valid & Requesting a project that doesn't exist returns a 404 code.  & PASSED \\\hline
+Invalid & Requesting a project that exists returns the aforementioned project.  & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+\section{Data API}
+All tests of the datalayer have passed, for information regarding tests
+please see the unit tests present at: \href{https://gitlab.ida.liu.se/filst04/tdp003-2018-database-tests}{Database Tests}
+
+\end{document}

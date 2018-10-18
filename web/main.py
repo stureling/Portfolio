@@ -267,7 +267,7 @@ def modify(project_id):
     ----------
     project_id : int
         The integer representing the desired project_id key in
-    the database.
+        the database.
 
     Returns
     ----------
@@ -277,7 +277,7 @@ def modify(project_id):
 
 
     def allowed_file(filename):
-        """ 
+        """ Decide if the file extension is acceptable
         
         Determines whether or not a filename is valid, 
         based upon the ALLOWED_EXTENSIONS field in app.config.
@@ -297,6 +297,17 @@ def modify(project_id):
 
 
     def file_upload():
+        """ Save the file and make directories
+
+        Function handles all of the os file path and os file saving
+        implementations. It will return the name of all of the files
+        so they can be put in a list within the project.
+
+        Returns
+        ---------
+        list : list
+           A list of all the filenames of the uploaded files.
+                """
         if request.files:
             files = request.files.getlist("images")
             for f in files: 
@@ -447,20 +458,35 @@ def invalid_login(error):
     flash('You are not logged in.', "warning")
     return redirect(url_for("login"))
 
-@app.route("/list")
-def three():
-    """ Function for handling three slashes
-    
-    """
-    print("lol")
-    return "lol"
-
 @app.route("/get")
 def get():
+    """ This is an easter egg.
+    
+    It has goats.
+
+    Returns
+    --------
+    str
+       Some HTML.
+    
+    """
     return "<p>What do you mean this isn't what you meant when you said 'GET'? It's clearly a get!</p> <img src='static/images/goat.jpg' style='height:100vh;'>"
 
 @app.context_processor
 def imggetter():
+    """ Context processor
+    
+    This function lets Flask access any functions specified within
+    its return dictionary from any context, so that they can be 
+    called from within Jinja templates.
+
+    Returns
+    --------
+    dict : dict
+       Dictionary of all functions and variables to be accessible
+       in every context.
+
+    """
     return dict(get_images=get_images)
 
 if __name__ == "__main__":

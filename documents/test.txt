@@ -1,0 +1,30 @@
+Presentation
+
+2.2 
+===========================
+Input (x)
+---------
+site_url/project/x
+
+Case: Valid data
+----------
+- An integer present in the project database
+
+Results
+---------
+A valid project is always returned.
+
+
+Case: Invalid data
+----------
+- An integer not present in the project database.
+- Characters or words.
+
+Results
+----------
+The system throws an appropriate error code.
+Status: PASSED
+
+
+2.3
+===========================

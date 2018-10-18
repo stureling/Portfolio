@@ -8,9 +8,19 @@ class_kw = "form-control text-dark bg-light"
 class ModifyForm(Form):
     """Form for modifying a project.
     
-    It has several fields of various types that are interpreted
-    by WTForms.
+    It has several fields of various types (StringField, 
+    IntegerField, FileField, etc.) that correspond to the
+    indexes in the project's dictionary, which are specified in the
+    project specification. Please refer to:
+    `LiU Documentation <https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf>`_
 
+    
+    Parameters
+    -----------
+    *args : *args
+       Any number of positional arguments.
+    **kwargs : **kwargs
+       Any number of keyword arguments.
     """
     def __init__(self, *args,  **kwargs):
         super().__init__(*args, **kwargs)
@@ -49,6 +59,13 @@ class ModifyFormAdd(ModifyForm):
     Like ModifyForm, except it inherts a validations method for 
     the project_id field in order to avoid conflicts with other
     projects already in the database.
+
+    Parameters
+    -----------
+    *args : *args
+       Any number of positional arguments.
+    **kwargs : **kwargs
+       Any number of keyword arguments.
 
 
     """
