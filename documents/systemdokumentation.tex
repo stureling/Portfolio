@@ -36,7 +36,7 @@ Eric Jönsson}
 
 \section{Design}
 \subsection{Data API}
-All functions are defined in a seperate document called module documentation.
+All functions are defined in a seperate document called module\_documentation.pdf.
 \subsection{User interface}
 \begin{figure}[h!]
     \centering
@@ -46,6 +46,19 @@ All functions are defined in a seperate document called module documentation.
 \end{figure}
 All functions
 \section{Errors and errorlogs}
+\subsection{Logs}
+When the project is running logs are printed out directly to the terminal.
+No file logging is performed.
 
+\subsection{Tests}
+The Data API is built to handle the unit tests present at: \href{https://gitlab.ida.liu.se/filst04/tdp003-2018-database-tests}{Database Tests}. These
+tests can be cloned into a suitable folder on a local computer and ran to
+verify that the Data API works as intended. Please note that in order to run
+the tests, the data.py file from the project has to be present in the
+same folder as the data\_test.py file from the database test repo.
+To run the tests simply execute data\_test.py within your terminal.
+
+No specific tests are executed on the front end itself, however one might
+concievably want to write some on one's own.
 
 \end{document}
