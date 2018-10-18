@@ -17,7 +17,9 @@
       {% include "message_flashing.html" %}
       <!-- Form for input -->
       <form action="{{url_for('modify', 
-		    project_id=project_id)}}" method="POST">
+		    project_id=project_id)}}"
+	    method="POST"
+	    enctype="multipart/form-data">
 	<div class="form-row align-items-top">
 	  <div class="col-8">
 	    {{ forms.input("project_name") }}
@@ -42,7 +44,7 @@
 	  <div class="col-7">
 	    {{ forms.input("external_link") }}
 	  </div>
-	  <div class="col-4 align-text-center">
+	  <div class="col-4 pl-5 ml-5 mt-4">
 	    <button type="submit" class="btn btn-primary">Submit</button>
 	  </div>
 	</div>
@@ -81,6 +83,12 @@
       <div class="form-row align-items-top">
 	<div class="col">
 	    {{ forms.input("techniques_used") }}
+	</div>
+      </div>
+
+      <div class="form-row align-items-top">
+	<div class="col">
+	    {{ forms.input("images") }}
 	</div>
       </div>
 

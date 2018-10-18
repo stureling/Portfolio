@@ -4,11 +4,19 @@ import data
 import os
 from flask_login import LoginManager, login_user, login_required, UserMixin
 from flask_login import logout_user
+from werkzeug.utils import secure_filename
 import forms
+from shutil import rmtree
 
 # Start Flask
 app = Flask(__name__)
 app.secret_key = "\xe1TL\\xc4?~\\xc4\\x91\\xa49E|m3qrQ\\xb7\'F\\x18<\\xa5\\xe1kJ\\xb8\\x89\\xa9\\xa8>\\xc7&\\x16\\xb6\\xe0\\x86\\xa7m\\xc4]Mg\\xdf\\xe0\\x8c\\xa3Ts\\xaa]\\xc1\\xf1Q,\\x9c\\xa5\\xe7-\\xd9\\xda\\xb2\\xf1\\xf3"
+
+app.config["UPLOAD_FOLDER"] = "static/images/"
+app.config["PROJECT_IMAGE_DIR"] = "static/images/projects/"
+app.config["ALLOWED_EXTENSIONS"] = "jpg"
+app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 4 # 4 MB
+
 db = data.load("data.json")
 
 
@@ -59,6 +67,31 @@ def load_user(user_id):
     """
     return User(user_id)
 
+
+def get_images(i_d):
+    """ Get all images from a project
+
+    This function returns every image present in the project
+    id's corresponding image folder on the server.
+
+    Parameters
+    ----------
+    i_d : int
+       The project ID.
+
+    Returns
+    ---------
+    images : list
+       Every image's relative path.
+    """
+    i_d = str(i_d)
+    images = []
+    location = app.config["PROJECT_IMAGE_DIR"]+i_d+"/"
+    if os.path.isdir(location):
+        image_files = os.scandir(location)
+        for image in image_files:
+            images.append("../"+location+image.name)
+    return images
 
 # Start Flask routes
 @app.route("/")
@@ -166,18 +199,23 @@ def project(project_id):
     render_template
 
     """
+    
     db = data.load("data.json")
     if project_id.isdigit():
         valid_project = data.get_project(db, int(project_id))
+        images = get_images(project_id)
+        print(images)
         if valid_project:
             return render_template("project.html",
                                    project=data.get_project(db,
-                                                            int(project_id)))
+                                                            int(project_id)),
+                                   images=images)
         else:
             abort(404)
     else:
         abort(404)
 
+        
 @app.route("/edit", methods=["GET", "POST"])
 @login_required
 def edit():
@@ -194,8 +232,15 @@ def edit():
     db = data.load("data.json")
     # Delete project
     if request.method == "POST":
-        data.remove_project(db, int(request.form["delete"]))
+        p_id = request.form["delete"]
+        data.remove_project(db, int(p_id))
         data.save(db, "data.json")
+
+        # Remove file
+        if os.path.isdir(app.config["PROJECT_IMAGE_DIR"]+p_id+"/"):
+            rmtree(app.config["PROJECT_IMAGE_DIR"]+p_id+"/")
+            
+        
         flash("Project deleted.", "success")
 
     all_projects = data.search(db, search="")
@@ -229,19 +274,70 @@ def modify(project_id):
     render_template
 
     """
+
+
+    def allowed_file(filename):
+        """ 
+        
+        Determines whether or not a filename is valid, 
+        based upon the ALLOWED_EXTENSIONS field in app.config.
+
+        Parameters
+        ----------
+        filename : str
+           The name of the file to check.
+
+        Return
+        ---------
+        bool
+
+        """
+        if filename.rsplit(".", 1)[1] in app.config["ALLOWED_EXTENSIONS"]:
+            return True
+
+
+    def file_upload():
+        if request.files:
+            files = request.files.getlist("images")
+            for f in files: 
+                if allowed_file(f.filename):
+                    sec_filename = secure_filename(f.filename)
+                    
+                    # Check if the project path exists, create it if it doesn't
+                    if not os.path.isdir(app.config["PROJECT_IMAGE_DIR"]
+                                         +str(form.project_id.data)+"/"):
+                        os.mkdir(app.config["PROJECT_IMAGE_DIR"]
+                                 +str(form.project_id.data)+"/")
+                    
+                    # Save the file
+                    f.save((os.path.join(app.config["PROJECT_IMAGE_DIR"]+
+                                     str(form.project_id.data)+"/", sec_filename)))
+                    flash("File "+ sec_filename + " uploaded successfully.", "success")
+                else:
+                    flash("Invalid file format. Valid formats are: "
+                          +app.config["ALLOWED_EXTENSIONS"], "danger")
+            return [f.filename for f in files]
+    
     db = data.load("data.json")
+    
     if project_id == "add":
         form = forms.ModifyFormAdd(request.form, database=db)
         # Add new project.
         if request.method == "POST" and form.validate():
-            flash("Project modified successfully.", "success")
+            filenames = file_upload()
             db.append({})
             for k,v in form.data.items():
                 if k == "techniques_used":
                     v = v.split(" ")
-                db[-1][k] = v
-
+                    v = [x for x  in v if x != ""]
+                    db[-1][k] = v
+                elif k == "images":
+                    db[-1][k] = filenames
+                else:
+                    db[-1][k] = v
             data.save(db, "data.json")
+            flash("Project modified successfully.", "success")
+            
     elif  (project_id.isdigit() and
            int(project_id) in  [x["project_id"] for x in db]):
         # Get current project and its index
@@ -250,16 +346,16 @@ def modify(project_id):
         p_index = db.index(project[0])
         form = forms.ModifyForm(request.form,
                                data=project[0], database=db)
+        file_upload()
         # Modify the project.
         if request.method == "POST" and form.validate():
             flash("Project modified successfully.", "success")
             for k,v in form.data.items():
                 if project[0][k] != v:
                     if k == "techniques_used":
-                        print(v.split(" "))
                         v = v.split(" ")
+                        v = [x for x  in v if x != ""]
                 project[0][k] = v
-
             data.save( db, "data.json")
 
     else:
@@ -350,6 +446,22 @@ def invalid_login(error):
     """
     flash('You are not logged in.', "warning")
     return redirect(url_for("login"))
+
+@app.route("/list")
+def three():
+    """ Function for handling three slashes
+    
+    """
+    print("lol")
+    return "lol"
+
+@app.route("/get")
+def get():
+    return "<p>What do you mean this isn't what you meant when you said 'GET'? It's clearly a get!</p> <img src='static/images/goat.jpg' style='height:100vh;'>"
+
+@app.context_processor
+def imggetter():
+    return dict(get_images=get_images)
 
 if __name__ == "__main__":
     app.run(debug=True)

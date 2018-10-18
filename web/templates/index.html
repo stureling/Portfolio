@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm h-100">
                 <div class="jumbotron text-white text-center bg-transparent">
-                    <h1 class="display-5 ">Förnamn</h1>
+                    <h1 class="display-5 amatic-font">Förnamn Efternamn</h1>
                     <p class="lead small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt mauris quis elit faucibus condimentum. Etiam iaculis porttitor fermentum. Integer mi eros, vehicula tincidunt sollicitudin et, condimentum et nulla. Cras vestibulum nunc aliquam, ornare turpis vel, euismod urna.</p>
                     <i class="fas fa-envelope-square fa-2x"></i>
                     <i class="fab fa-gitlab fa-2x"></i>
@@ -49,8 +49,8 @@
 
     <div class="container mw-100 bg-light">
         <div class="jumbotron text-dark text-center bg-transparent">
-          <div class="display-2"{% filter upper%}
-	       >Recent projects{% endfilter%}</div>
+          <div class="display-2 amatic-font">
+	    Recent projects</div>
             <div class="row">
                 {%for project in latest_projects[:3] %}
                 {% include "card.html" %}

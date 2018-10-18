@@ -61,7 +61,7 @@
         "start_date": "2222-12-31",
         "end_date": "2412-12-12",
         "course_name": "I don't do courses.",
-        "long_description": "Voluptatem adipisci quaerat corrupti. Porro tempore molestiae in deleniti a repellendus eligendi dolorum. Quae eum nihil ullam assumenda unde delectus. In voluptas repellat quae laboriosam nostrum saepe ut magni. Harum repellendus consequatur perferendis alias ut molestias autem.\r\n\r\nVelit quo voluptatem nemo aliquid ab ipsum quae corporis. Molestias aut quasi omnis est vel doloribus quisquam rerum. Et quis minus nihil iure. Ab enim sunt rerum qui adipisci. Incidunt illo ut similique et quas unde. Autem voluptatem est expedita voluptas et.\r\n\r\nLaborum minima sapiente et fugiat reiciendis explicabo eum consequatur. Commodi minima consectetur molestiae. Ex molestiae laboriosam possimus similique quia voluptatem modi. Praesentium quia dolor quos delectus voluptas tempora soluta.\r\n\r\nAut dolores magnam cumque aut amet. Aut cupiditate ducimus earum quod exercitationem vitae. Labore culpa aperiam nam omnis ut voluptatem voluptatem. Voluptas sequi ab adipisci.\r\n\r\nPorro similique quis nihil quae voluptate possimus in nulla. Nisi iusto voluptatem deserunt. Nemo officiis unde nisi est qui voluptates iste. Et vel distinctio sit quod omnis. Odit et sequi aut similique exercitationem doloremque autem.",
+        "long_description": "\r\nVoluptatem adipisci quaerat corrupti. Porro tempore molestiae in deleniti a repellendus eligendi dolorum. Quae eum nihil ullam assumenda unde delectus. In voluptas repellat quae laboriosam nostrum saepe ut magni. Harum repellendus consequatur perferendis alias ut molestias autem.\r\n\r\nVelit quo voluptatem nemo aliquid ab ipsum quae corporis. Molestias aut quasi omnis est vel doloribus quisquam rerum. Et quis minus nihil iure. Ab enim sunt rerum qui adipisci. Incidunt illo ut similique et quas unde. Autem voluptatem est expedita voluptas et.\r\n\r\nLaborum minima sapiente et fugiat reiciendis explicabo eum consequatur. Commodi minima consectetur molestiae. Ex molestiae laboriosam possimus similique quia voluptatem modi. Praesentium quia dolor quos delectus voluptas tempora soluta.\r\n\r\nAut dolores magnam cumque aut amet. Aut cupiditate ducimus earum quod exercitationem vitae. Labore culpa aperiam nam omnis ut voluptatem voluptatem. Voluptas sequi ab adipisci.\r\n\r\nPorro similique quis nihil quae voluptate possimus in nulla. Nisi iusto voluptatem deserunt. Nemo officiis unde nisi est qui voluptates iste. Et vel distinctio sit quod omnis. Odit et sequi aut similique exercitationem doloremque autem.",
         "short_description": "We are able to ascertain with a good degree (p=0.942) of certainty that it is impossible to find your way to the local corner shop in any given world with more than four dimensions. ",
         "group_size": 2,
         "academic_credits": "lolwat",
@@ -71,9 +71,7 @@
         ],
         "project_name": "Spatial Recognition in Five Dimensional Space",
         "course_id": "NOTHX",
-        "images": [
-            ""
-        ],
+        "images": [],
         "project_id": 5
     },
     {

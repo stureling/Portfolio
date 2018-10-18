@@ -2,13 +2,22 @@
     background-color: transparent;
 }
 
+.amatic-font {
+    font-family: 'Amatic SC', cursive;
+    
+}
+
+h1.huge {
+    font-size:5em;
+}
+
 body {
     font-family: Verdana, Geneva, sans-serif;
     font-family: 'Advent Pro';
 }
 
 .image-div {
-    background:url('../images/background2.jpg');
+    background:url('../images/background2.jpg') fixed center center no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: inset 0px 0px 200px 0px rgba(0,0,0,1);
@@ -26,6 +35,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 
+}
+
+bg-semidark {
+    background-color:rgba(0,0,0,0.5);
 }
 
 

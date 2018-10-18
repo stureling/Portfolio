@@ -10,8 +10,9 @@
 
 <div class="h-100 container mw-100">
 
-  <div class="row align-items-center">
-    <div class="col p-5 m-5 bg-semi bg-shadow-dark rounded text-white">
+  <div class="row align-items-center mt-5">
+    <div class="col p-5 m-5 bg-semi bg-shadow-dark rounded text-white"
+	 style="height:100vh">
       {% include "message_flashing.html" %}
       <table class="table
 		  table-striped
@@ -42,13 +43,13 @@
 	{% for field in table_fields %}
 	<th scope="row">{{project[field]}}
 	  {% if field == "project_id"%}
+	  <br>
 	  <a href="{{url_for('modify', 
 		     project_id=project['project_id'])}}" class="small">
 
 	      <button type="button" class="btn btn-light">
 		  <i class="far fa-edit fa-xs"></i>
-	    </button></a>
-	    
+	  </button></a>
 	    <!-- Delete button -->
 	    <form method="POST" action="{{url_for('edit')}}">
 	      <button type="submit" name="delete"
