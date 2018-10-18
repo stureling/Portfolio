@@ -467,7 +467,7 @@ def get():
     Returns
     --------
     str
-       Some HTML.
+    
     
     """
     return "<p>What do you mean this isn't what you meant when you said 'GET'? It's clearly a get!</p> <img src='static/images/goat.jpg' style='height:100vh;'>"
