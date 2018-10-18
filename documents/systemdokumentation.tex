@@ -1,5 +1,6 @@
 \documentclass{TDP003mall}
 \usepackage{titlesec}
+\usepackage{graphicx}
 \definecolor{terminalgreen}{HTML}{8AE234}
 
 \newcommand{\version}{Version 0.1}
@@ -26,35 +27,25 @@ Eric Jönsson}
 \end{table}
 
 \section{Overview}
-\subsection{S}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{sevenskdiagram.png}
+    \caption{Simplified view of the portfolio}
+    \label{sekvensdiagram}
+\end{figure}
+
 \section{Design}
 \subsection{Data API}
-
-\subsubsection{Functions}
-\paragraph{load}
-\paragraph{save}
-\paragraph{load\_users}
-\paragraph{get\_project\_count}
-\paragraph{get\_project}
-\paragraph{search}
-\paragraph{get\_techniques}
-\paragraph{get\_searchfields}
-\paragraph{get\_technique\_stats}
-
-\subsubsection{JSON}
-\paragraph{Data}
-\paragraph{Users}
-
+All functions are defined in a seperate document called module documentation.
 \subsection{User interface}
-
-\subsubsection{main.py}
-
-\subsubsection{forms.py}
-
-\subsubsection{login.py}
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{sekvensdiagram2-3.png}
+    \caption{The inner workings of the user interface}
+    \label{sekvensdiagram2}
+\end{figure}
+All functions
 \section{Errors and errorlogs}
-Logging av felmeddelanden sker via terminalen. Ifall det blir fel i jinja kommer felmeddelandet också till webbläsaren.
 
 
 \end{document}
