@@ -1,13 +1,14 @@
-\documentclass{TDP003mall}
+ \documentclass{TDP003mall}
 \usepackage{titlesec}
 \usepackage{hyperref}
+\setcounter{secnumdepth}{5}
 \definecolor{terminalgreen}{HTML}{8AE234}
 
 \newcommand{\version}{Version 0.1}
 \author{Eric Jönsson, \url{erijo137@student.liu.se}\\
   Ida Bergquist, \url{idabe112@student.liu.se}}
 \title{Testdokumentation}
-\date{2018-10-16}
+\date{2018-10-23}
 \rhead{Ida Bergquist\\
 Eric Jönsson}
 
@@ -17,101 +18,208 @@ Eric Jönsson}
 \projectpage
 \tableofcontents
 \newpage
-\section{Revisionshistorik}
+\section{Revision history}
 \begin{table}[!h]
 \begin{tabularx}{\linewidth}{|l|X|l|}
 \hline
-\textbf{Ver.} & \textbf{Revisionsbeskrivning} & \textbf{Datum} \\\hline
-0.1 & Skapade testdokumentationen & 181016 \\\hline
+\textbf{Ver.} & \textbf{Revision description} & \textbf{Date} \\\hline
+0.1 & Created basic template for test documentation & 181016 \\\hline
+0.2 & Finalized document. & 181023 \\\hline
 \end{tabularx}
 \end{table}
 
-\section{User Interface}
-\subsection{}
-\paragraph{Demand: } ID 1.1, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
-\paragraph{Input (test):}
-site\_url/
+
+\section{Tests}
+\subsection{User Interface}
+\subsubsection{ID 1.1, Kravspecifikation}
+Demand: ID 1.1, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
 
 \begin{table}[!h]
-\begin{tabularx}{\linewidth}{|r|X|r|}\hline
-\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
-Valid & Main page loads with images displayed for every project. & PASSED \\\hline
-Invalid & Main page fails to display images. & PASSED \\\hline
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} & \textbf{Type} & \textbf{Test} & \textbf{Data} \\\hline
+1 & Valid & Main page loads with images displayed for every project. & URL: http://site/ \\\hline
 \end{tabularx}
 \end{table}
 
-\subsection{}
-\paragraph{Demand: } ID 1.2, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
-\paragraph{Input (test):}
-site\_url/list, methods=HTTP\_POST, HTTP\_GET
-
+\subsubsection{ID 1.2, Kravspecifikation}
+Demand: ID 1.2, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
 \begin{table}[!h]
-\begin{tabularx}{\linewidth}{|r|X|r|}\hline
-\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
-Valid & A search lists projects with short description. & PASSED \\\hline
-Valid & Search page can be sorted.  & PASSED \\\hline
-Valid & Any search lists the projects that correspond to the search.  & PASSED \\\hline
-Invalid & Searching for projects that don't exist yields an empty page & PASSED \\\hline
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Data} \\\hline
+1 &Valid & A search lists projects with short description. & http://site/search, any given search parameter. \\\hline
+2 &Valid & Search page can be sorted.  & http://site/search, any given search parameter and a sorting order. \\\hline
+3 &Valid & Any search lists the projects that correspond to the search.  & http://site/search, any given search parameter. \\\hline
+4 &Invalid & Searching for projects that don't exist yields an empty page & http://site/search, any given search parameter that doesn't correspond to data
+present in the database. \\\hline
+\end{tabularx}
+\end{table}
+
+
+\newpage
+\subsubsection{ID 1.3, Kravspecifikation}
+Demand: ID 1.3, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Data} \\\hline
+1 &Valid & Requesting existing project yields a page with all the information relevant to that project. & URL: http://site/project/x, where x is a valid project ID. \\\hline
+2 &Valid & GET variable passed into  project/ URL returns a project.  & URL: http://site/project/x,
+where x is anything.\\\hline
+3 &Invalid & Entering an integer that doesn't correspond to a project returns a 404 code.  & URL: http://site/project/x, where x is an integet not in the database. \\\hline
+4 &Invalid & Entering anything that isn't an integer results in a 404 code. & URL: http://site/project/x, where x isn't an integer. \\\hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{ID 1.4, Kravspecifikation}
+Demand:ID 1.4, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Data} \\\hline
+1 &Valid & Every project, with its corresponding techniques, is displayed on the page. & URL: http://site/techniques  \\\hline
+2 &Invalid & Passing in a project without a technique list doesn't break the
+website. & URL: http://site/techniques, and there exists a project in the database with empty or non-existant techniques\_used field. \\\hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{ID 1.5, Kravspecifikation}
+Demand:ID 1.5, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Data} \\\hline
+1 &Valid & A small image is displayed on the search page for every project. & URL: http://site/list, any given search parameter. \\\hline
+2 &Valid & A large image is displayed on the project page for every project. & URL: http://site/project/x, where x is an integer representing a project present in the database. \\\hline
 \end{tabularx}
 \end{table}
 \newpage
-\subsection{}
-\paragraph{Demand: } ID 1.3, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
-\paragraph{Input (test):}
-site\_url/project/test,  methods=HTTP\_GET
-
+\subsubsection{ID 1.6, Kravspecifikation}
+Demand:ID 1.6, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
 \begin{table}[!h]
-\begin{tabularx}{\linewidth}{|r|X|r|}\hline
-\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
-Valid & Requesting existing project yields a page with all the information relevant to that project. & PASSED \\\hline
-Valid & GET variable passed into  project/ URL returns a project.  & PASSED \\\hline
-Invalid & Entering an integer that doesn't correspond to a project returns a 404 code.  & PASSED \\\hline
-Invalid & Entering anything that isn't an integer results in a 404 code. & PASSED \\\hline
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} & \textbf{Type} & \textbf{Test} & \textbf{Data} \\\hline
+1 &Invalid & Requesting a page that doesn't exist returns a 404 code.  & URL: http://site/x, where x is any page that doesn't exist. \\\hline
+2 &Invalid & Logging in with invalid user credentials returns a ``not logged in'' message. & URL: http://site/login, where login credentials are anything not presently in the user database. \\\hline
 \end{tabularx}
 \end{table}
 
-\subsection{}
-\paragraph{Demand: }ID 1.4, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
-\paragraph{Input (test):}
-site\_url/techniques,  methods=HTTP\_GET
 
+
+\subsubsection{ID 1.7, Kravspecifikation}
+Demand:ID 1.7, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
 \begin{table}[!h]
-\begin{tabularx}{\linewidth}{|r|X|r|}\hline
-\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
-Valid & Every project, with its corresponding techniques, is displayed on the page. & PASSED \\\hline
-Invalid & Passing in a project without a technique list doesn't break the
-website. & ??? \\\hline
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} &\textbf{Input} & \textbf{Test} & \textbf{Data} \\\hline
+1 &Valid & Requesting a project that doesn't exist returns a 404 code.  & URL: http://site/project/x, where x is anything except an integer representing a project present in the database. \\\hline
+2 &Invalid & Requesting a project that exists returns the aforementioned project.  & URL: http://site/project/x, where x is an integer representing a project present in the database. \\\hline
 \end{tabularx}
 \end{table}
 
-\subsection{}
-\paragraph{Demand: }ID 1.5, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
-\paragraph{Input (test):}
-site\_url,  methods=HTTP\_GET, HTTP\_POST
-
+\subsection{Data API}
 \begin{table}[!h]
-\begin{tabularx}{\linewidth}{|r|X|r|}\hline
-\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
-Valid & A small image is displayed on the search page for every project. & PASSED \\\hline
-Invalid & A project without images still displays a default image. & ??? \\\hline
+\begin{tabularx}{\linewidth}{|r|r|X|X|}\hline
+\textbf{Case} &\textbf{Input} & \textbf{Test} & \textbf{Data} \\\hline
+1 & -  & Data layer tests  & - \\\hline
 \end{tabularx}
 \end{table}
-\newpage
-\subsection{}
-\paragraph{Demand: }ID 1.6, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
-\paragraph{Input (test):}
-site\_project,  methods=HTTP\_GET
-
-\begin{table}[!h]
-\begin{tabularx}{\linewidth}{|r|X|r|}\hline
-\textbf{Input} & \textbf{Test} & \textbf{ Result} \\\hline
-Valid & Requesting a project that doesn't exist returns a 404 code.  & PASSED \\\hline
-Invalid & Requesting a project that exists returns the aforementioned project.  & PASSED \\\hline
-\end{tabularx}
-\end{table}
-
-\section{Data API}
-All tests of the datalayer have passed, for information regarding tests
+For information regarding tests
 please see the unit tests present at: \href{https://gitlab.ida.liu.se/filst04/tdp003-2018-database-tests}{Database Tests}
+\newpage
 
+
+
+
+% Test log
+% ---------------------------------- %
+\section{Test log, 2018-10-16}
+\subsection{Results}
+All test cases listed below passed with their given criteria.
+\subsection{User Interface}
+\subsubsection{ID 1.1, Kravspecifikation}
+Demand: ID 1.1, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} & \textbf{Type} & \textbf{Test} & \textbf{Result} \\\hline
+1 & Valid & Main page loads with images displayed for every project. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{ID 1.2, Kravspecifikation}
+Demand: ID 1.2, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Result} \\\hline
+1 &Valid & A search lists projects with short description. & PASSED \\\hline
+2 &Valid & Search page can be sorted.  & PASSED \\\hline
+3 &Valid & Any search lists the projects that correspond to the search.  & PASSED \\\hline
+4 &Invalid & Searching for projects that don't exist yields an empty page & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{ID 1.3, Kravspecifikation}
+Demand: ID 1.3, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Result} \\\hline
+1 &Valid & Requesting existing project yields a page with all the information relevant to that project. & PASSED \\\hline
+2 &Valid & GET variable passed into  project/ URL returns a project.  & PASSED\\\hline
+3 &Invalid & Entering an integer that doesn't correspond to a project returns a 404 code.  & PASSED \\\hline
+4 &Invalid & Entering anything that isn't an integer results in a 404 code. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{ID 1.4, Kravspecifikation}
+Demand:ID 1.4, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Result} \\\hline
+1 &Valid & Every project, with its corresponding techniques, is displayed on the page. & PASSED  \\\hline
+2 &Invalid & Passing in a project without a technique list doesn't break the
+website. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{ID 1.5, Kravspecifikation}
+Demand:ID 1.5, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} &\textbf{Type} & \textbf{Test} & \textbf{Result} \\\hline
+1 &Valid & A small image is displayed on the search page for every project. & PASSED \\\hline
+2 &Valid & A large image is displayed on the project page for every project. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{ID 1.6, Kravspecifikation}
+Demand:ID 1.6, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} & \textbf{Type} & \textbf{Test} & \textbf{Result} \\\hline
+1 &Invalid & Requesting a page that doesn't exist returns a 404 code.  & PASSED \\\hline
+2 &Invalid & Logging in with invalid user credentials returns a ``not logged in'' message. & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{ID 1.7, Kravspecifikation}
+Demand:ID 1.7, \href{https://www.ida.liu.se/~TDP003/current/projekt/dokument/systemspecifikation.pdf}{Kravspecifikation}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} &\textbf{Input} & \textbf{Test} & \textbf{Result} \\\hline
+1 &Valid & Requesting a project that doesn't exist returns a 404 code.  & PASSED \\\hline
+2 &Invalid & Requesting a project that exists returns the aforementioned project.  & PASSED \\\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Data API}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|r|r|X|r|}\hline
+\textbf{Case} &\textbf{Input} & \textbf{Test} & \textbf{Result} \\\hline
+1 & -  & Data layer tests  & PASSED \\\hline
+\end{tabularx}
+\end{table}
+For information regarding tests
+please see the unit tests present at: \href{https://gitlab.ida.liu.se/filst04/tdp003-2018-database-tests}{Database Tests}
 \end{document}
