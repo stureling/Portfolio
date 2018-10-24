@@ -7,6 +7,7 @@ from flask_login import logout_user
 from werkzeug.utils import secure_filename
 import forms
 from shutil import rmtree
+import scandir
 
 # Start Flask
 app = Flask(__name__)
@@ -88,7 +89,7 @@ def get_images(i_d):
     images = []
     location = app.config["PROJECT_IMAGE_DIR"]+i_d+"/"
     if os.path.isdir(location):
-        image_files = os.scandir(location)
+        image_files = scandir.scandir(location)
         for image in image_files:
             images.append("../"+location+image.name)
     return images
